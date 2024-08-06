@@ -4,7 +4,7 @@ import * as s from "./style";
 
 function ListLayout(props) {
     return (
-        <div>
+        <div css={s.layout}>
             
         </div>
     );

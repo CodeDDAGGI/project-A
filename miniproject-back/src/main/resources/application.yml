@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local: local, common, secret
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - local
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - common
+  output:
+    ansi:
+      enabled: Always
+mybatis:
+  mapper-locations:
+    - /mappers/*.xml
+
+

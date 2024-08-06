@@ -4,7 +4,7 @@ import * as s from "./style";
 
 function Header(props) {
     return (
-        <div>
+        <div css={s.HeaderContainer}>
             
         </div>
     );

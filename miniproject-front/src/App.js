@@ -23,7 +23,7 @@ function App() {
         <CalendarLayout />
         <ListLayout />
         <Routes>
-          <Route path={['/', '/news']} element={<></>} />
+          {/* <Route path={['/', '/news']} element={<></>} /> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/register" element={<CalendarPage />} />

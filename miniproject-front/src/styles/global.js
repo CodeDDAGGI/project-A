@@ -19,19 +19,7 @@ export const reset = css`
         text-decoration: none;
     }
 
-    button {
-        
-    }
 
-    tr, td {
-
-    }
-
-    h1, h2, h3 {
-        height: 40px;
-        width: 100%;
-        font-size: 40px;
-    }
 
     
 

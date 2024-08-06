@@ -4,16 +4,46 @@ export const HeaderContainer = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     box-sizing: border-box;
     width: 1300px;
     height: 15%;
     border: 1px solid #000000;
 `;
-export const logo = css`
-
+export const logoContainer = css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    padding: 0px 10px;
 `;
-export const menu = css`
-    box-sizing: border-box;
+
+export const loginContainer = css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    & button {
+        width: 80px;
+        height: 30px;
+        margin: 0px 10px;
+    }
+
+`
+export const navContainer = css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
+    height: 100%;
+`;
+
+export const links = css`
+    display: flex;
+    flex-direction: row;
+    & li {
+        margin: 0px 100px;
+    }
 `;

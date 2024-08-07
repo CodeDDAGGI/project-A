@@ -11,9 +11,7 @@ spring:
     activate:
       on-profile:
         - local
-
 ---
-
 spring:
   config:
     activate:
@@ -21,9 +19,7 @@ spring:
         - common
   output:
     ansi:
-      enabled: Always
+      enabled: ALWAYS
 mybatis:
   mapper-locations:
     - /mappers/*.xml
-
-

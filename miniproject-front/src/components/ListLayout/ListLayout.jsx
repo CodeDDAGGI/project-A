@@ -8,308 +8,70 @@ function ListLayout(props) {
         <div css={s.layout}>
             <div css={s.container}>
                 <h2>리스트페이지</h2>
-                <div css={s.dataContainer}>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>카테고리1</th>
-                                <th>카테고리2</th>
-                                <th>카테고리3</th>
-                                <th>카테고리4</th>
-                                <th>카테고리5</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지1"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지2"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지3"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지4"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지5"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                                <td>
-                                    <p>소제목</p>
-                                    <img src={dog} alt="이미지"/>
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                <div css={s.category}>
+                    <h2>정치</h2>
+                    <h2>경제</h2>
+                    <h2>스포츠</h2>
+                    <h2>엔터</h2>
                 </div>
+                <div css={s.mapContainer}>
+                    <div css={s.dataSection}>
+                        <h2>제목</h2>
+                        <div>
+                            <img src={dog} alt="" />
+                            <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
+국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.
+
+</p>
+                        </div>
+                    </div>
+                    <div css={s.dataSection}>
+                        <h2>제목</h2>
+                        <div>
+                            <img src={dog} alt="" />
+                            <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
+
+국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.
+
+</p>
+                        </div>
+                    </div>
+                    <div css={s.dataSection}>
+                        <h2>제목</h2>
+                        <div>
+                            <img src={dog} alt="" />
+                            <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
+
+국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.
+
+</p>
+                        </div>
+                    </div>
+                    <div css={s.dataSection}>
+                        <h2>제목</h2>
+                        <div>
+                            <img src={dog} alt="" />
+                            <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
+
+국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.
+
+</p>
+                        </div>
+                    </div>
+                    <div css={s.dataSection}>
+                        <h2>제목</h2>
+                        <div>
+                            <img src={dog} alt="" />
+                            <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
+
+국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.
+
+</p>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     );

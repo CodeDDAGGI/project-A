@@ -14,7 +14,7 @@ export const reset = css`
     }
 
     ul, ol {
-        list-style: none;
+        list-style-type: none;
     }
 
     input {

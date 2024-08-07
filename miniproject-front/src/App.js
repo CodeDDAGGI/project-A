@@ -18,17 +18,14 @@ function App() {
       <Global styles={reset} />
       <Header />
       <MainLayout>
-        <SlidingBanner />
-        <CalendarLayout />
-        <ListLayout />
+        <Routes>
+          {/* <Route path={['/', '/news']} element={<></>} /> */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<CalendarPage />} />
+        </Routes>
       </MainLayout>
       <Footer />
-      <Routes>
-        {/* <Route path={['/', '/news']} element={<></>} /> */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/register" element={<CalendarPage />} />
-      </Routes>
     </>
   );
 }

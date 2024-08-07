@@ -1,1 +1,0 @@
-package projectA.miniproject.dto;

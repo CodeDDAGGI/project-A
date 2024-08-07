@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 
-export const mainlayout = css`
+export const layout = css`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin: 0px auto;
     width: 1300px;
     height: 100%;
     border: 1px solid #dbdbdb;
-`
+`;

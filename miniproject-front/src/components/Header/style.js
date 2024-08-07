@@ -4,7 +4,8 @@ export const HeaderContainer = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-sizing: border-box;
+    align-items: center;
+    margin: 0px auto;
     width: 1300px;
     height: 15%;
     border: 1px solid #000000;
@@ -15,7 +16,6 @@ export const logoContainer = css`
     justify-content: space-between;
     align-items: center;
     height: 50%;
-    padding: 0px 10px;
 `;
 
 export const loginContainer = css`
@@ -37,7 +37,7 @@ export const navContainer = css`
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    height: 100%;
+    height: 50%;
 `;
 
 export const links = css`

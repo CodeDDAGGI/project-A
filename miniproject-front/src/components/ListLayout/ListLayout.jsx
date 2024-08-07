@@ -1,7 +1,7 @@
 import React from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import dog from '../../assets/강아지.jpg'
+import dog from "../../assets/강아지.jpg"
 
 function ListLayout(props) {
     return (

@@ -1,4 +1,4 @@
-package projectA.miniproject.entity;
+package com.projectA.miniproject.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class image_tb {
-    private int image_tb;
-    private String image_url;
-    private int news_id;
-
+public class like {
+    private int like_id;
+    private int new_id;
+    private int like_status;
 }

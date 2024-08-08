@@ -15,18 +15,15 @@ import CalendarPage from './pages/CalendarPage/CalendarPage';
 function App() {
   return (
     <>
-      <Global styles={reset}/>
-      <Routes>
-        {/* <Route path={['/', '/news']} element={<></>} /> */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/register" element={<CalendarPage />} />
-      </Routes>
+      <Global styles={reset} />
       <Header />
       <MainLayout>
-        <SlidingBanner />
-        <CalendarLayout />
-        <ListLayout />
+        <Routes>
+          {/* <Route path={['/', '/news']} element={<></>} /> */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<CalendarPage />} />
+        </Routes>
       </MainLayout>
       <Footer />
     </>

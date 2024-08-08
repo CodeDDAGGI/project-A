@@ -1,0 +1,9 @@
+컨트롤러 @slf4j @crossOrigin @RestController @RequestMapping
+연결 @AutoWired
+서비스 (실제 사용되는 곳은 서비스imp)
+연결 @AutoWired
+레파짓토리(@Mapper) mapper xml과 데이터를 주고받음
+
+resp 데빌 데이터를 줄때
+req 데이터 데이터를 가져올때
+entity band 레파짓토리랑 연결

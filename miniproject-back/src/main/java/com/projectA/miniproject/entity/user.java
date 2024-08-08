@@ -1,4 +1,4 @@
-package projectA.miniproject.entity;
+package com.projectA.miniproject.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class user_tb {
+public class user {
 
     private int user_id;
     private String username;

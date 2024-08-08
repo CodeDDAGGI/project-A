@@ -1,52 +1,72 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     width: 100%;
-    height: 800px;
-    border: 1px solid #dbdbdb;
-    background-color: red;
+    /* height: 800px; */
+    flex-grow: 1;
+    /* border: 1px solid #dbdbdb; */
 `;
 export const container = css`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: 100%;
-    height: 1800px;
-    background-color: blue;
+    width: 40%;
+    /* height: 1800px; */
 `;
 
-export const dataContainer = css`
+export const category = css`
     display: flex;
     width: 100%;
-    flex-grow: 1;
-    background-color: green;
-    table{
-        width: 100%;
-    }
-    thead tr{
+    h2{
         display: flex;
-        height: 30px;
-        font-size: 20px;
-        justify-content: space-around;
+        justify-content: center;
+        flex-grow: 1;
     }
-    tr {
+`;
+export const mapContainer = css`
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+`;
+export const dataSection = css`
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    /* border-radius: 15px; */
+    width: 100%;
+    overflow: hidden;
+h2{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 5px 0;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    & + div{
         display: flex;
-        justify-content : space-around;
     }
-    td {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px 0 10px 0;
-        width: 200px;
-        height: 250px;
-        border: 1px solid white;
-
-        img{
-            object-fit: cover;
-            overflow: hidden;
-            width: 100%;
-        }
+}
+    display: flex;
+    img{
+        width: 20%;
+        border-radius: 15px;
+        margin-right: 50px;
+    }
+    p{  
+        width: 70%;
+        height: 60px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        cursor: pointer;
     }
 `;

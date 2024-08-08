@@ -21,7 +21,7 @@ export const swiper = css`
     text-align: center;
     font-size: 20px;
     background: #dddddd;  
-    /* Center slide text vertically */
+    cursor: pointer;
 }
   
 .swiper-slide img {

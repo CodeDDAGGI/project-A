@@ -7,5 +7,4 @@ export const layout = css`
     margin: 0px auto;
     width: 1300px;
     height: 100%;
-    border: 1px solid #dbdbdb;
 `;

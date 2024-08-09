@@ -39,7 +39,7 @@ export const dataSection = css`
     flex-direction: column;
     margin: 10px 0;
     border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     /* border-radius: 15px; */
     width: 100%;
     overflow: hidden;
@@ -53,14 +53,17 @@ h2{
         display: flex;
     }
 }
-    display: flex;
-    img{
-        width: 20%;
+    & img{
+        box-sizing: border-box;
+        width: 200px;
+        height: 150px;
+        /* object-fit: fill; */
         border-radius: 15px;
-        margin-right: 50px;
+        /* margin-right: 50px; */
     }
     p{  
-        width: 70%;
+        margin: 10px;
+        width: 90%;
         height: 60px;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -69,4 +72,21 @@ h2{
         -webkit-box-orient: vertical;
         cursor: pointer;
     }
+`;
+export const textConatainer = css`
+display: flex;
+flex-direction: column;
+justify-content: center;
+`;
+export const publisherContainer = css`
+    display: flex;
+    color: grey;
+    p{
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center; */
+        align-items: flex-end;
+        font-size: 14px;
+    }
+;
 `;

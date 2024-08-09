@@ -16,12 +16,16 @@ export const loginContainer = css`
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 40px;
 
     & button {
         width: 70px;
         height: 30px;
-        margin-left: 10px;
+        border: none;
+        background: none;
+        margin-left: 5px;
+        font-size: 14px;
+        font-weight: 600;
         :hover {
             cursor: pointer;
         }
@@ -34,10 +38,10 @@ export const logoContainer = css`
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    border-bottom: 2px solid black;
+
     & h1 {
         font-size: 60px;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
         cursor: default;
     }
 `;
@@ -53,10 +57,19 @@ export const navContainer = css`
     & ul {
         display: flex;
         flex-direction: row;
-    }
+        
+        li {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 60px;
+        font-size: 20px;
+        }
+        
+        a {
+            font-weight: 800;
+            text-decoration: none;
+            color: black;
+        }
+}
 
-    & li {
-        margin: 0px 50px;
-        font-size: 25px;
-    }
 `;

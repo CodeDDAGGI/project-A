@@ -1,5 +1,6 @@
 package com.projectA.miniproject.controller;
 
+import com.projectA.miniproject.dto.Request.ReqAddtoUser;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,30 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getId(@PathVariable int id) {
-        return ResponseEntity.ok().body(id);
+    //post 추가
+    @PostMapping("/user")
+    public ResponseEntity<?> addUser(@RequestBody ReqAddtoUser addtoUser){
+        log.info("{}", addtoUser);
+        return ResponseEntity.ok().body(userService.addUser(addtoUser));
     }
 
 
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<?> deleteUser (@PathVariable int id){
+        return ResponseEntity.ok().body(null);
+    }
 }
 
 
+
+//
+//
+//
+//
+//
+//
+//
 
 
 

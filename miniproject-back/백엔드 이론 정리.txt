@@ -1,9 +1,20 @@
 컨트롤러 @slf4j @crossOrigin @RestController @RequestMapping
 연결 @AutoWired
-서비스 (실제 사용되는 곳은 서비스imp)
+서비스 (실제 사용되는 곳은 서비스imp) 
+중간에서 dto에서 entity로
+entity에서 dto로 변환해준다
 연결 @AutoWired
 레파짓토리(@Mapper) mapper xml과 데이터를 주고받음
 
 resp 데빌 데이터를 줄때
 req 데이터 데이터를 가져올때
 entity band 레파짓토리랑 연결
+
+생성(객체) 저장
+
+조회(겟)뺴고는 다 int로 리턴, 조회는 객체를 리턴
+삭제(int)
+정보가 존재해야 한다
+수정(int)
+
+post 추가 get 조회 put 수정 delete 삭제

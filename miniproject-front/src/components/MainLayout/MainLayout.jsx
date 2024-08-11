@@ -3,7 +3,7 @@ import React from 'react';
 import * as s from "./style";
 import SlidingBanner from '../SlidingBanner/SlidingBanner';
 import CalendarLayout from '../CalendarLayout/CalendarLayout';
-import ListLayout from '../ListLayout/ListLayout';
+import BodyLayout from '../BodyListLayout/BodyLayout';
 
 function MainLayout(props) {
 
@@ -11,9 +11,8 @@ function MainLayout(props) {
         <div css={s.layout}>
             <SlidingBanner />
             <CalendarLayout />
-            <ListLayout />
+            <BodyLayout />
         </div>
     );
 }
-
 export default MainLayout;

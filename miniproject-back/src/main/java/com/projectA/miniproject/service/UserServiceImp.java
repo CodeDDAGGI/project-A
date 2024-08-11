@@ -14,6 +14,11 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
+    public int delete(int userId) {
+        return userMapper.deleteUser(userId);
+    }
+
     // 요청받은 dto를 맵퍼에 건네주기 위해 엔티티로 변환
     @Override
     public int addUser(ReqAddtoUser addtoUser) {
@@ -22,7 +27,9 @@ public class UserServiceImp implements UserService {
                .user_email(addtoUser.getUser_email())
                .password(addtoUser.getPassword())
                .build();
-
+        log.info("{}" , user);
        return userMapper.addUser(user);
     }
+
+
 }

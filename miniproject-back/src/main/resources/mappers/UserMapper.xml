@@ -8,4 +8,11 @@
         insert into user_tb
         values(0 , #{username} , #{password} , #{user_email})
     </insert>
+
+    <delete id="deleteUser" parameterType="integer">
+        delete
+        from user_tb
+        where
+            userId = #{user_id}
+    </delete>
 </mapper>

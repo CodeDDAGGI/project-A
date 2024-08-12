@@ -1,5 +1,8 @@
 package com.projectA.miniproject.controller;
 
+import com.projectA.miniproject.dto.Request.ReqAddtoUser;
+import com.projectA.miniproject.dto.Request.ReqEditUser;
+import com.projectA.miniproject.entity.User;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +16,50 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserService  userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getId(@PathVariable int id) {
-        return ResponseEntity.ok().body(id);
+    //post 추가
+    @PostMapping("/user")
+    public ResponseEntity<?> addUser(@RequestBody ReqAddtoUser addtoUser){
+        log.info("{}", addtoUser);
+        return ResponseEntity.ok().body(userService.addUser(addtoUser));
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> dldl(@PathVariable int userId ){
+        log.info("겟매핑{}", userId);
+
+        return ResponseEntity.ok().body(userId);
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable int userId) {
+        log.info("{}", userId);
+        return ResponseEntity.ok().body(userService.deleteUser(userId));
+    }
+
+    @PutMapping("/{reqDto}")
+    public ResponseEntity<?> modify (@RequestBody ReqEditUser reqDto){
+        log.info("{}",reqDto);
+        return ResponseEntity.ok().body(userService.editUser(reqDto));
+    }
+
+
+
+
 
 
 }
 
 
+
+//
+//
+//
+//
+//
+//
+//
 
 
 

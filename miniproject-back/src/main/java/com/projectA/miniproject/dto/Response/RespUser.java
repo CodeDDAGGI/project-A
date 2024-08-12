@@ -1,12 +1,16 @@
 package com.projectA.miniproject.dto.Response;
 
+
+import lombok.Builder;
 import lombok.Data;
 
-@Data
-public class ReqAddUser {
 
+@Data
+@Builder
+public class RespUser {
+
+    private int userId;
     private String username;
     private String password;
-    private String useremail;
-
+    private String user_email;
 }

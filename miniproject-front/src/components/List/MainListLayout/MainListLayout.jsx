@@ -1,14 +1,23 @@
 import React from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import dog from "../../assets/강아지.jpg"
-import dog2 from "../../assets/가로.jpg"
+import dog from "../../../assets/강아지.jpg"
+import dog2 from "../../../assets/가로.jpg"
 
-function ListLayout(props) {
+function MainListLayout(props) {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1) > 10 ? "" : "0" + (date.getMonth() + 1);
+    const days = (date.getDate() > 10 ? "" : "0") + (date.getDate());
+    const day = date.getDay();
+    const week = ["일", "월", "화", "수", "목", "금", "토"]
+    const toDay = year + "년 " + month + "월 " + days + "일 " + week[day]+"요일";
     return (
         <div css={s.layout}>
             <div css={s.container}>
-                <h2>리스트페이지</h2>
+                <div css={s.containerHeader}>
+                    <h2><span>이 시각 <font>주요뉴스 </font></span> <strong>{toDay}</strong></h2>
+                </div>
                 <div css={s.category}>
                     <h2>핫토픽</h2>
                     <h2>정치</h2>
@@ -85,6 +94,7 @@ function ListLayout(props) {
                         </div>
                     </div>
                     {/* dataSection */}
+                    {/*  
                     <div css={s.dataSection}>
                         <h2>제목</h2>
                         <div>
@@ -102,7 +112,7 @@ function ListLayout(props) {
                             </div>
                         </div>
                     </div>
-                    {/* dataSection */}
+                    {/* dataSection 
                     <div css={s.dataSection}>
                         <h2>제목</h2>
                         <div>
@@ -118,7 +128,7 @@ function ListLayout(props) {
                             </div>
                         </div>
                     </div>
-                    {/* dataSection */}
+                    {/* dataSection
                     <div css={s.dataSection}>
                         <h2>제목</h2>
                         <div>
@@ -136,7 +146,7 @@ function ListLayout(props) {
                             </div>
                         </div>
                     </div>
-                    {/* dataSection */}
+                    {/* dataSection 
                     <div css={s.dataSection}>
                         <h2>제목</h2>
                         <div>
@@ -161,4 +171,4 @@ function ListLayout(props) {
     );
 }
 
-export default ListLayout;
+export default MainListLayout;

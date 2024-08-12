@@ -2,15 +2,14 @@ import React from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
 import CalendarLayout from '../CalendarLayout/CalendarLayout';
-import ListLayout from '../ListLayout/ListLayout';
+import BodyLayout from '../BodyListLayout/BodyLayout';
 
 function MainLayout(props) {
     return (
         <div css={s.layout}>
             <CalendarLayout />
-            <ListLayout />
+            <BodyLayout />
         </div>
     );
 }
-
 export default MainLayout;

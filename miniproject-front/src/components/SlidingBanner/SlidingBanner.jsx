@@ -6,10 +6,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import image1 from '../../assets/image1.jpg';
-import image2 from '../../assets/image2.jpg';
-import image3 from '../../assets/image3.jpg';
-import image4 from '../../assets/image4.jpg';
 import SlideLayout from '../SlideLayout/SlideLayout';
 
 function SlidingBanner(props) {

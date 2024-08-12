@@ -6,16 +6,16 @@ export const HeaderContainer = css`
     flex-direction: column;
     margin: 0px auto;
     width: 100%;
+    height: 130px;
 `;
 
 export const loginContainer = css`
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: 50%;
     background-color: #000000;
 `;
 
@@ -43,13 +43,12 @@ export const navContainer = css`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 80px;
     width: 100%;
+    height: 50%;
     background-color: #8eb9dd;
     
-
     & h1 {
-        font-size: 30px;
+        font-size: 26px;
         cursor: default;
     }
 
@@ -61,11 +60,11 @@ export const navContainer = css`
         display: flex;
         justify-content: space-between;
         margin: 0px 60px;
-        font-size: 20px;
+        font-size: 18px;
         }
         
         a {
-            font-weight: 800;
+            font-weight: 600;
             text-decoration: none;
             color: black;
         }

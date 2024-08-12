@@ -5,8 +5,7 @@ export const HeaderContainer = css`
     display: flex;
     flex-direction: column;
     margin: 0px auto;
-    width: 1300px;
-    border-bottom: 4px solid #000000;
+    width: 100%;
 `;
 
 export const loginContainer = css`
@@ -16,33 +15,26 @@ export const loginContainer = css`
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    height: 40px;
+    height: 80px;
+    background-color: #000000;
+`;
 
+export const buttonContainer = css`
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    width: 300px;
+    height: 100%;
     & button {
-        width: 70px;
-        height: 30px;
+        width: 80px;
+        height: 40px;
         border: none;
         background: none;
-        margin-left: 5px;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 25px;
+        color: #fafafa;
         :hover {
             cursor: pointer;
         }
-    }
-`;
-
-export const logoContainer = css`
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-
-    & h1 {
-        font-size: 60px;
-        margin-bottom: 40px;
-        cursor: default;
     }
 `;
 
@@ -51,8 +43,15 @@ export const navContainer = css`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    height: 30px;
+    height: 80px;
+    width: 100%;
+    background-color: #8eb9dd;
+    
+
+    & h1 {
+        font-size: 30px;
+        cursor: default;
+    }
 
     & ul {
         display: flex;
@@ -71,5 +70,4 @@ export const navContainer = css`
             color: black;
         }
 }
-
 `;

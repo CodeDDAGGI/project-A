@@ -17,6 +17,7 @@ function App() {
     <>
       <Global styles={reset} />
       <Header />
+      <SlidingBanner />
       <MainLayout>
         <Routes>
           {/* <Route path={['/', '/news']} element={<></>} /> */}

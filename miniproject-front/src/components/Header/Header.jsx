@@ -2,18 +2,22 @@ import React from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
 import { Link } from 'react-router-dom';
+import { LuUser } from "react-icons/lu";
+import { LuSearch } from "react-icons/lu";
+import { LuUserPlus } from "react-icons/lu";
 
 function Header(props) {
     return (
         <div css={s.HeaderContainer}>
-                <div css={s.loginContainer}>
-                    <button>로그인</button>
-                    <button>회원가입</button>
+            <div css={s.loginContainer}>
+                <div css={s.buttonContainer}>
+                    <button><LuSearch /></button>
+                    <button><LuUser /></button>
+                    <button><LuUserPlus /></button>
                 </div>
-            <div css={s.logoContainer}>
-                <h1>Logo</h1>
             </div>
             <div css={s.navContainer}>
+                <h1>삼김뉴스</h1>
                 <ul>
                     <li><Link>정치</Link></li>
                     <li><Link>사회</Link></li>

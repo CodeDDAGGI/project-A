@@ -1,22 +1,47 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    display: flex;
-    justify-content: center;
     box-sizing: border-box;
-    width: 100%;
-    /* height: 800px; */
+    display: flex;
     flex-grow: 1;
-    /* border: 1px solid #dbdbdb; */
+    padding: 0 30px 0 0;
+    /* justify-content: center; */
+    /* width: 50%; */
 `;
 export const container = css`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: 40%;
+    width: 100%;
     /* height: 1800px; */
 `;
-
+export const containerHeader = css`
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+    h2{
+        font-size: 20px;
+        font-weight: 800;
+        height: 40px;
+        span{
+            color: #de1400;
+        }
+        font{
+            color: black;
+        }
+        
+        strong{
+            font-size: 15px;
+            font-weight: 700;
+            color: #8d8d8d;
+            /* margin-left: 10px; */
+            &::before{
+                margin: 0 10px;
+                content: "|";
+            }
+        }
+    }
+`;
 export const category = css`
     display: flex;
     width: 100%;

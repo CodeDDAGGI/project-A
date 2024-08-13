@@ -27,9 +27,9 @@ function SlidingBanner(props) {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
             >
-                <SwiperSlide>
-                    <SlideLayout />
-                </SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
             </Swiper>
         </div>
     );

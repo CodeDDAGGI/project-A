@@ -16,7 +16,7 @@ export const loginContainer = css`
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color: #000000;
+    background-color: #f3752cff;
 `;
 
 export const buttonContainer = css`
@@ -31,7 +31,7 @@ export const buttonContainer = css`
         border: none;
         background: none;
         font-size: 25px;
-        color: #fafafa;
+        color: black;
         :hover {
             cursor: pointer;
         }
@@ -45,16 +45,18 @@ export const navContainer = css`
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color: #8eb9dd;
+    background-color: black;
     
     & h1 {
         font-size: 26px;
+        color: #f3752cff;
         cursor: default;
     }
 
     & ul {
         display: flex;
         flex-direction: row;
+        margin-left: 10px;
         
         li {
         display: flex;
@@ -66,7 +68,7 @@ export const navContainer = css`
         a {
             font-weight: 600;
             text-decoration: none;
-            color: black;
+            color: white;
         }
 }
 `;

@@ -1,3 +1,5 @@
+구매자는 형식에 맞는 걸 줘야 결과값이 나온다
+
 컨트롤러 @slf4j @crossOrigin @RestController @RequestMapping
 연결 @AutoWired
 서비스 (실제 사용되는 곳은 서비스imp) 

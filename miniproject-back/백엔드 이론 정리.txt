@@ -17,6 +17,12 @@ entity band 레파짓토리랑 연결
 정보가 존재해야 한다
 수정(int)
 
+mapping 
+get 조회할때는 List or 객체로
+post 값을 db에 보내줄때
+delete 해당id를 삭제할때
+put 수정을 할때
+
 post 추가 get 조회 put 수정 delete 삭제
 
 @Requestparams post만 가능

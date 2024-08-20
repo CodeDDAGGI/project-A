@@ -27,6 +27,9 @@ put 수정을 할때 int로 리턴
 
 post 추가 get 조회 put 수정 delete 삭제
 
+List 전체 조회를 할때는
+서비스에서 엔티티의 리스트형태를 respdto로 바꿔서 보내준다
+
 @Requestparams post만 가능
 
 get

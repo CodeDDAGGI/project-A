@@ -1,3 +1,5 @@
+구매자는 형식에 맞는 걸 줘야 결과값이 나온다
+
 컨트롤러 @slf4j @crossOrigin @RestController @RequestMapping
 연결 @AutoWired
 서비스 (실제 사용되는 곳은 서비스imp) 
@@ -6,18 +8,27 @@ entity에서 dto로 변환해준다
 연결 @AutoWired
 레파짓토리(@Mapper) mapper xml과 데이터를 주고받음
 
-resp 데빌 데이터를 줄때 맵퍼에서 받을 걸 웹으로 던져줌
-req 데이터 데이터를 가져올때 데이터를 받아서 맵퍼에 던져줌
+resp 데빌 데이터를 줄때 맵퍼에서 받을 걸 웹으로 던져줌 화면에 보여질 친구다
+req 데이터 데이터를 가져올때 데이터를 받아서 맵퍼에 던져줌 웹에서 가져옴 -> 이후 가공을 하는 건 서비스
 entity band 레파짓토리랑 연결
 
 생성(객체) 저장
 
-조회(겟)뺴고는 다 int로 리턴, 조회는 객체를 리턴
+조회(겟)빼고는 다 int로 리턴, 조회는 객체를 리턴
 삭제(int)
 정보가 존재해야 한다
 수정(int)
 
+mapping 
+get 조회할때는 List or 객체로
+post 값을 db에 보내줄때 객체로
+delete 해당id를 삭제할때 int
+put 수정을 할때 int로 리턴 
+
 post 추가 get 조회 put 수정 delete 삭제
+
+List 전체 조회를 할때는
+서비스에서 엔티티의 리스트형태를 respdto로 바꿔서 보내준다
 
 @Requestparams post만 가능
 

@@ -4,8 +4,11 @@ import * as s from "./style";
 
 function LoginPage(props) {
     return (
-        <div>
-            
+        <div css={s.layout}>
+            <div>
+                <input type="text" />
+                <input type="password" />
+            </div>
         </div>
     );
 }

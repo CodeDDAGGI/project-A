@@ -20,23 +20,14 @@ export const loginContainer = css`
 `;
 
 export const buttonContainer = css`
-    display: flex;
-    justify-content: row;
-    align-items: center;
-    width: 300px;
-    height: 100%;
-    & button {
-        width: 80px;
-        height: 40px;
-        border: none;
-        background: none;
-        font-size: 25px;
-        color: black;
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 50px;
+      width: 200px;
+      height: 100%;
+ `;
 
 export const navContainer = css`
     display: flex;
@@ -57,6 +48,7 @@ export const navContainer = css`
         display: flex;
         flex-direction: row;
         margin-left: 10px;
+        writing-mode: horizontal-tb;
         
         li {
         display: flex;

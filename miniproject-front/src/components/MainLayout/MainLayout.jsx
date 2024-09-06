@@ -3,13 +3,13 @@ import React from 'react';
 import * as s from "./style";
 import CalendarLayout from '../CalendarLayout/CalendarLayout';
 import BodyLayout from '../BodyListLayout/BodyLayout';
+import SlidingBanner from '../SlidingBanner/SlidingBanner';
 
-function MainLayout(props) {
+function MainLayout({children}) {
     return (
-        <div css={s.layout}>
-            <CalendarLayout />
-            <BodyLayout />
-        </div>
+            <div css={s.layout}>
+                {children}
+            </div>
     );
 }
 export default MainLayout;

@@ -8,8 +8,8 @@ function BodyLayout() {
     return (
         <div css={s.layout}>
             <div css={s.container}>
-                <MainListLayout/>
-                <SubListLayout/>
+                <MainListLayout />
+                <SubListLayout />
             </div>
         </div>
     );

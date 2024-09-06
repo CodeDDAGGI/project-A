@@ -16,6 +16,10 @@ function App() {
   return (
     <>
       <Global styles={reset} />
+<<<<<<< HEAD
+      
+=======
+>>>>>>> 1aed83dad54e1913b26f39f33943c801cf49ccae
       <MainLayout>
         <Routes>
           <Route path='/' element={<HomePageLayout />} />

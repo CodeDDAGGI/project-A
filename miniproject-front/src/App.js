@@ -16,10 +16,13 @@ function App() {
   return (
     <>
       <Global styles={reset} />
+<<<<<<< HEAD
       
+=======
+>>>>>>> 1aed83dad54e1913b26f39f33943c801cf49ccae
       <MainLayout>
         <Routes>
-          <Route path='/news' element={<HomePageLayout />} />
+          <Route path='/' element={<HomePageLayout />} />
           <Route path='/news/politics' element={<PoliticsPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />

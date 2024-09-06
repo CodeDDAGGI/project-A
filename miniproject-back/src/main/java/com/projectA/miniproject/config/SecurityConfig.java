@@ -14,10 +14,16 @@ public class SecurityConfig {
     protected void config(HttpSecurity http)throws Exception {
         http.formLogin().disable();
         http.httpBasic().disable();
+        http.cors();
+        http.csrf().disable();
+        http.sessionManagement().disable();
+        http.headers().frameOptions().disable();
         http.authorizeRequests()
                 .antMatchers("/api/v1/*" , "/test/*")
+                .permitAll()
                 .anyRequest()
-                .permitAll();
+                .authenticated();
+
 
     }
 }

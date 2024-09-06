@@ -7,7 +7,10 @@ import Footer from './components/Footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-import CalendarPage from './pages/CalendarPage/CalendarPage';
+import SlidingBanner from './components/SlidingBanner/SlidingBanner';
+import PoliticsPage from './pages/PoliticsPage/PoliticsPage';
+import HomePageLayout from './components/HomePageLayout/HomePageLayout';
+import SignupPage from './pages/SignupPage/SignupPage';
 
 function App() {
   return (
@@ -17,10 +20,11 @@ function App() {
       <SlidingBanner />
       <MainLayout>
         <Routes>
-          {/* <Route path={['/', '/news']} element={<></>} /> */}
+          <Route path='/news' element={<HomePageLayout />} />
+          <Route path='/news/politics' element={<PoliticsPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/register" element={<CalendarPage />} />
         </Routes>
       </MainLayout>
       <Footer />

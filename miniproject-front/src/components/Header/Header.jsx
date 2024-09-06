@@ -5,21 +5,22 @@ import { Link } from 'react-router-dom';
 import { LuUser } from "react-icons/lu";
 import { LuSearch } from "react-icons/lu";
 import { LuUserPlus } from "react-icons/lu";
+import Icon from '../Forms/Icon/Icon';
 
 function Header(props) {
     return (
         <div css={s.HeaderContainer}>
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
-                    <button><LuSearch /></button>
-                    <button><LuUser /></button>
-                    <button><LuUserPlus /></button>
+                    <div><Icon><LuSearch /></Icon></div>
+                    <div><Icon><LuUser /></Icon></div>
+                    <div><Icon><LuUserPlus /></Icon></div>
                 </div>
             </div>
             <div css={s.navContainer}>
                 <h1>삼김뉴스</h1>
                 <ul>
-                    <li><Link>정치</Link></li>
+                    <li><Link to='/news/politics'>정치</Link></li>
                     <li><Link>사회</Link></li>
                     <li><Link>국제</Link></li>
                     <li><Link>건강</Link></li>

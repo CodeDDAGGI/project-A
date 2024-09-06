@@ -6,68 +6,61 @@ export const HeaderContainer = css`
     flex-direction: column;
     margin: 0px auto;
     width: 100%;
+    height: 130px;
 `;
 
 export const loginContainer = css`
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    height: 80px;
-    background-color: #000000;
+    height: 50%;
+    background-color: #f3752cff;
 `;
 
 export const buttonContainer = css`
-    display: flex;
-    justify-content: row;
-    align-items: center;
-    width: 300px;
-    height: 100%;
-    & button {
-        width: 80px;
-        height: 40px;
-        border: none;
-        background: none;
-        font-size: 25px;
-        color: #fafafa;
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 50px;
+      width: 200px;
+      height: 100%;
+ `;
 
 export const navContainer = css`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 80px;
     width: 100%;
-    background-color: #8eb9dd;
+    height: 50%;
+    background-color: black;
     
-
     & h1 {
-        font-size: 30px;
+        font-size: 26px;
+        color: #f3752cff;
         cursor: default;
     }
 
     & ul {
         display: flex;
         flex-direction: row;
+        margin-left: 10px;
+        writing-mode: horizontal-tb;
         
         li {
         display: flex;
         justify-content: space-between;
         margin: 0px 60px;
-        font-size: 20px;
+        font-size: 18px;
         }
         
         a {
-            font-weight: 800;
+            font-weight: 600;
             text-decoration: none;
-            color: black;
+            color: white;
         }
 }
 `;

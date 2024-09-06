@@ -15,6 +15,7 @@ export const loginInput = css`
     flex-direction: column;
 
     & input {
+        height: 20px;
         margin-bottom: 10px;
     }
 

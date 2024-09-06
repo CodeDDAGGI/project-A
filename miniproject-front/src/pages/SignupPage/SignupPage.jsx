@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import *as s from './style';
 import { useNavigate } from 'react-router-dom';
+import { SignupApi } from '../../apis/signupApi';
 
 function SignupPage(props) {
     const navigator = useNavigate();

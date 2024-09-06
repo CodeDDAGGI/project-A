@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import *as s from './style';
+import { useNavigate } from 'react-router-dom';
 
 function SignupPage(props) {
+    const navigator = useNavigate();
     const [inputUser , setInputUser] = useState({
         username: '',
         password: '',
@@ -19,9 +21,20 @@ function SignupPage(props) {
 
 
 
-    const SignupSubmitClick = () => {
-   
+    const SignupSubmitClick = async () => {
+        const signupdata = await SignupApi(inputUser);
+        console.log(signupdata);
+        
+        if(!signupdata.isSuccess) {
+            alert("회원가입에 실패했습니다.");
+            return;
+        }
+
+        alert("회원가입에 성공");
+        navigator("/");
     }
+
+    
     return (
         <div css={s.layout}>
             <div>

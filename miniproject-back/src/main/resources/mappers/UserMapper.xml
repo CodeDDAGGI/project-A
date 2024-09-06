@@ -4,8 +4,25 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.projectA.miniproject.repository.UserMapper">
 
-    <insert id="addUser" >
+    <insert id="addUser" parameterType="integer">
         insert into user_tb
         values(0 , #{username} , #{password} , #{user_email})
     </insert>
+    <delete id="delete" parameterType="integer">
+        delete
+        from user_tb
+        where user_id = #{user_id}
+    </delete>
+    <update id="edit" parameterType="com.projectA.miniproject.entity.User">
+        update
+            user_tb
+        set
+            username = #{username},
+            password = #{password},
+            user_email = #{user_email}
+        where
+            user_id = #{user_id}
+    </update>
+
+
 </mapper>

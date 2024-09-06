@@ -1,6 +1,7 @@
 package com.projectA.miniproject.service;
 
 import com.projectA.miniproject.dto.Request.ReqAddtoUser;
+import com.projectA.miniproject.dto.Request.ReqEditUser;
 import com.projectA.miniproject.entity.User;
 import com.projectA.miniproject.repository.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -24,5 +25,22 @@ public class UserServiceImp implements UserService {
                .build();
 
        return userMapper.addUser(user);
+    }
+
+    @Override
+    public int deleteUser(int userId) {
+        return userMapper.delete(userId);
+    }
+
+    @Override
+    public int editUser(ReqEditUser reqDto) {
+        User user = User.builder()
+                .user_id(reqDto.getUser_id())
+                .username(reqDto.getUsername())
+                .password(reqDto.getPassword())
+                .user_email(reqDto.getUser_email())
+                .build();
+
+        return userMapper.edit(user);
     }
 }

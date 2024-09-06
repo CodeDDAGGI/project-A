@@ -1,0 +1,1 @@
+npm i axiox react-icons react-router-dom react-modal @emotion/react firebase

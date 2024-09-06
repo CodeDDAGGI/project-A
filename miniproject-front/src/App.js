@@ -16,8 +16,7 @@ function App() {
   return (
     <>
       <Global styles={reset} />
-      <Header />
-      <SlidingBanner />
+      
       <MainLayout>
         <Routes>
           <Route path='/news' element={<HomePageLayout />} />

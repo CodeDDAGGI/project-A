@@ -5,10 +5,14 @@ import MainLayout from '../MainLayout/MainLayout';
 
 function HomePageLayout(props) {
     return (
-        <MainLayout>
-            <BodyLayout />
-            <CalendarLayout />
-        </MainLayout>
+        <>
+            <Header />
+            <SlidingBanner />
+            <MainLayout>
+                <BodyLayout />
+                <CalendarLayout />
+            </MainLayout>
+        </>
     );
 }
 

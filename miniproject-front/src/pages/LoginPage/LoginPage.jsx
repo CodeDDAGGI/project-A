@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
+import { LoginApi } from '../../apis/LoginApi';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage(props) {
+    const navigate = useNavigate();
 
     const [ inputUser, setInputUser ] = useState({
         username: "",
@@ -17,14 +20,18 @@ function LoginPage(props) {
     }
 
     const handleLoginOnClick = async () => {
-
-
+        try {
+            await LoginApi(inputUser);
+            navigate("/");
+        } catch (error) {
+            
+        }
     }
 
     return (
         <div css={s.layout}>
             <div css={s.header}>
-                <h1>일단 로그인 페이지</h1>
+                <h1>로그인 하셔야지</h1>
             </div>
             <div css={s.loginInput}>
                 <div>

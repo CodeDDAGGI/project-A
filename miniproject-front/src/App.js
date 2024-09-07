@@ -2,12 +2,10 @@ import './App.css';
 import { Global } from '@emotion/react';
 import { reset } from './styles/global';
 import MainLayout from './components/MainLayout/MainLayout';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-import SlidingBanner from './components/SlidingBanner/SlidingBanner';
 import PoliticsPage from './pages/PoliticsPage/PoliticsPage';
 import HomePageLayout from './components/HomePageLayout/HomePageLayout';
 import SignupPage from './pages/SignupPage/SignupPage';
@@ -16,10 +14,6 @@ function App() {
   return (
     <>
       <Global styles={reset} />
-<<<<<<< HEAD
-      
-=======
->>>>>>> 1aed83dad54e1913b26f39f33943c801cf49ccae
       <MainLayout>
         <Routes>
           <Route path='/' element={<HomePageLayout />} />

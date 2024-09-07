@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import *as s from './style';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SignupApi } from '../../apis/signupApi';
 
 function SignupPage(props) {
     const navigator = useNavigate();
     const [inputUser , setInputUser] = useState({
-        username: '',
-        password: '',
-        email: '',
+        username: "",
+        password: "",
+        checkPassword: "",
+        name: "",
+        email: "",
     });
 
-    const handleInputData = (e) => {
-        console.log(e.target.name);
-        setInputUser({
+    const handleInputChange = (e) => {
+        setInputUser(inputUser => ({
             ...inputUser,
             [e.target.name]: e.target.value,
-        });
+        }));
     }
-
 
 
     const SignupSubmitClick = async () => {
         const signupdata = await SignupApi(inputUser);
+        console.log(inputUser);
         console.log(signupdata);
         
         if(!signupdata.isSuccess) {
@@ -38,13 +39,18 @@ function SignupPage(props) {
     
     return (
         <div css={s.layout}>
-            <div css={s.inputContainer}>
-                <input type="text" name='username' value={inputUser.username} onChange={handleInputData} placeholder='아이디'/>
-                <input type="password" name='password' value={inputUser.password} onChange={handleInputData} placeholder='비밀번호'/>
-                <input type="email" name='email' value={inputUser.email} onChange={handleInputData} placeholder='이메일'/>
-                <button onClick={SignupSubmitClick}>가입하기</button>
-            </div>
-            <div css={s.signupButton}>
+            <Link to={"/"}>사이트 로고</Link>
+            <div>
+                <div css={s.inputContainer}>
+                    <input type="text" name='username' value={inputUser.username} onChange={handleInputChange} placeholder='아이디'/>
+                    <input type="password" name='password' value={inputUser.password} onChange={handleInputChange} placeholder='비밀번호'/>
+                    <input type="password" name='checkPassword' value={inputUser.checkPassword} onChange={handleInputChange} placeholder='비밀번호 확인'/>
+                    <input type="text" name='name' value={inputUser.name} onChange={handleInputChange} placeholder='닉네임'/>
+                    <input type="email" name='email' value={inputUser.email} onChange={handleInputChange} placeholder='이메일'/>
+                </div>
+                <div css={s.signupButton}>
+                    <button onClick={SignupSubmitClick}>가입하기</button>
+                </div>
             </div>
         </div>
     );

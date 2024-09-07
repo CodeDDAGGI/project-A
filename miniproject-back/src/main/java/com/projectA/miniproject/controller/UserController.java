@@ -1,48 +1,29 @@
 package com.projectA.miniproject.controller;
 
-import com.projectA.miniproject.dto.Request.ReqAddtoUser;
-import com.projectA.miniproject.dto.Request.ReqEditUser;
-import com.projectA.miniproject.entity.User;
+import com.projectA.miniproject.dto.Request.ReqJoinUserDto;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1")
 public class UserController {
 
     @Autowired
     private UserService  userService;
 
     //post 추가
-    @PostMapping("/user")
-    public ResponseEntity<?> addUser(@RequestBody ReqAddtoUser addtoUser){
-        log.info("{}", addtoUser);
-        return ResponseEntity.ok().body(userService.addUser(addtoUser));
+    @PostMapping("/signup")
+    public ResponseEntity<?> signup(@Valid   @RequestBody ReqJoinUserDto joinUser){
+        log.info("{}", joinUser);
+        return ResponseEntity.ok().body(userService.SignupUser(joinUser));
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<?> dldl(@PathVariable int userId ){
-        log.info("겟매핑{}", userId);
-
-        return ResponseEntity.ok().body(userId);
-    }
-
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable int userId) {
-        log.info("{}", userId);
-        return ResponseEntity.ok().body(userService.deleteUser(userId));
-    }
-
-    @PutMapping("/{reqDto}")
-    public ResponseEntity<?> modify (@RequestBody ReqEditUser reqDto){
-        log.info("{}",reqDto);
-        return ResponseEntity.ok().body(userService.editUser(reqDto));
-    }
 
 
 

@@ -14,7 +14,7 @@ function Header(props) {
                 <div css={s.buttonContainer}>
                     <div><Icon><LuSearch /></Icon></div>
                     <div><Icon><LuUser /></Icon></div>
-                    <div><Icon><LuUserPlus /></Icon></div>
+                    <div><Link to={"/news/signup"}><Icon><LuUserPlus /></Icon></Link></div>
                 </div>
             </div>
             <div css={s.navContainer}>

@@ -1,28 +1,27 @@
 spring:
-  profiles:
-    active: local
-    group:
-      local: local, common, secret
+  datasource:
+    url: jdbc:h2:file:./data/auth_db;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    # NEVER schema.sql에 쿼리 실행을 막아줌
+    # ALWAYS schema.sql 실행
+    initialization-mode: NEVER
+    schema: classpath:schema.sql
 
----
-
-spring:
-  config:
-    activate:
-      on-profile:
-        - local
-
----
-
-spring:
-  config:
-    activate:
-      on-profile:
-        - common
-  output:
-    ansi:
-      enabled: ALWAYS
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
 mybatis:
   mapper-locations:
     - /mappers/*.xml
+
+user:
+  profile:
+    img:
+      default: https://firebasestorage.googleapis.com/v0/b/userprofile-fcfbf.appspot.com/o/user%2FSample_User_Icon.png?alt=media&token=59bc7778-5086-4c0f-8178-3d12ba0c5e56
+
+jwt:
+  secret: 652ed0caaabe42d858fb2bdba16341b4f7f06de08662b0ff14fd457ff416dad2bc29fba27a79b84ca96e036c3a56a96f258851270299768de3ae04b6ec074465b28c803516ad477c0a4145dc5d15de08acc7268a86556e21c6ed6648b62f8b57e2a31e92da61b4b9412b675980751296eca099e76618965e2fcba6d5faea6aec4024e16bbda75b02190310d5bdbd9f967908a9a35fa3ad104fffec7b1d8f0c2f83926a32a549103757e73050021257a18d4fb2b200bab8a5784ffb696a0906a4b5cd797e072db73b6034e14c8f61c53e6ca9a06c211bd8ca496c2e7a1e28cc50b5c77445f874c94475a773dd1c3f6036aae967582c41b5fe99667491c45bc7b7

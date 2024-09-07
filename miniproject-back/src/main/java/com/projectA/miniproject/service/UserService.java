@@ -5,9 +5,11 @@ import com.projectA.miniproject.dto.Request.ReqJoinUserDto;
 import com.projectA.miniproject.dto.Request.ReqSigninDto;
 =======
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
+import com.projectA.miniproject.dto.Response.RespSignupDto;
 import com.projectA.miniproject.entity.Role;
 >>>>>>> b5708a9ad2a9c292cc207289c89175364c950753
 import com.projectA.miniproject.entity.User;
+import com.projectA.miniproject.exception.SignupException;
 import com.projectA.miniproject.repository.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
 //    @Transactional(rollbackFor = )
-    public int SignupUser(ReqSignupDto signupDto){
+    public RespSignupDto SignupUser(ReqSignupDto signupDto){
         User user = null;
 
         try {
@@ -36,17 +38,18 @@ public class UserService {
             Role role = Role.builder()
                     .name("ROLE_NAME")
                     .build();
+
         }catch (Exception e){
-            throw new
+            throw new SignupException(e.getMessage());
         }
 
 
         log.info("{}", signupDto);
 
-
-        log.info("{}", user);
-
-        return userMapper.save(user);
+        return RespSignupDto.builder()
+                .message("회원가입 성공")
+                .user(user)
+                .build();
     }
 
     public Boolean signin(ReqSigninDto dto) {

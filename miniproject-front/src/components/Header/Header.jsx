@@ -9,7 +9,7 @@ import Icon from '../Forms/Icon/Icon';
 
 function Header(props) {
     return (
-        <div css={s.HeaderContainer}>
+        <div css={s.layout}>
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
                     <div><Icon><LuSearch /></Icon></div>

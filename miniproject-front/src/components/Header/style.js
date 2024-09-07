@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-export const HeaderContainer = css`
+export const layout = css`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 package com.projectA.miniproject.controller;
 
+import com.projectA.miniproject.dto.Request.ReqSigninDto;
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,5 +23,12 @@ public class UserController {
     public ResponseEntity<?> signup(@Valid @RequestBody ReqSignupDto joinUser) {
         log.info("{}", joinUser);
         return ResponseEntity.ok().body(userService.SignupUser(joinUser));
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> signin(@RequestBody ReqSigninDto dto) {
+        System.out.println(dto);
+        return ResponseEntity.ok().body(null);
+
     }
 }

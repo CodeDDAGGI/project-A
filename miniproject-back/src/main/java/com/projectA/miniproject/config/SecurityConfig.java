@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/api/v1/*" ,
                                     "/test/*",
-                        "/h2-console")
+                        "/h2-console/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

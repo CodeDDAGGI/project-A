@@ -1,24 +1,15 @@
 package com.projectA.miniproject.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class User {
-
-    private Long user_id;
-    private String username;
-    private String password;
+public class Role {
+    private Long id;
     private String name;
-    private String email;
-    private Set<UserRole> userRole;
-
 }

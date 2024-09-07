@@ -1,13 +1,15 @@
 package com.projectA.miniproject.dto.Request;
 
+import com.projectA.miniproject.entity.User;
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class ReqJoinUserDto {
+public class ReqSignupDto {
 
     @Pattern(regexp = "^[a-z0-9]{6,}$", message = "사용자이름은 6자이상의 영소문자 , 숫자 조합이여야합니다.")
     private String username;
@@ -20,4 +22,13 @@ public class ReqJoinUserDto {
     @Email(message = "이메일 형식이어야 합니다")
     private String email;
 
+
+    public User toEntity(BCryptPasswordEncoder passwordEncoder){
+        return User.builder()
+                .username(username)
+                .password(password)
+                .name(name)
+                .email(email)
+                .build();
+    }
 }

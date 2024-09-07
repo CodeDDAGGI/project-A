@@ -1,6 +1,6 @@
 package com.projectA.miniproject.controller;
 
-import com.projectA.miniproject.dto.Request.ReqJoinUserDto;
+import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class UserController {
 
     //post 추가
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@Valid   @RequestBody ReqJoinUserDto joinUser){
+    public ResponseEntity<?> signup(@Valid   @RequestBody ReqSignupDto joinUser){
         log.info("{}", joinUser);
         return ResponseEntity.ok().body(userService.SignupUser(joinUser));
     }

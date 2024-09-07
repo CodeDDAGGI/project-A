@@ -45,7 +45,7 @@ function SignupPage(props) {
                     <input type="text" name='username' value={inputUser.username} onChange={handleInputChange} placeholder='아이디'/>
                     <input type="password" name='password' value={inputUser.password} onChange={handleInputChange} placeholder='비밀번호'/>
                     <input type="password" name='checkPassword' value={inputUser.checkPassword} onChange={handleInputChange} placeholder='비밀번호 확인'/>
-                    <input type="text" name='name' value={inputUser.name} onChange={handleInputChange} placeholder='닉네임'/>
+                    <input type="text" name='name' value={inputUser.name} onChange={handleInputChange} placeholder='이름'/>
                     <input type="email" name='email' value={inputUser.email} onChange={handleInputChange} placeholder='이메일'/>
                 </div>
                 <div css={s.signupButton}>

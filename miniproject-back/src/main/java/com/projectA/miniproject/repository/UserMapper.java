@@ -8,6 +8,7 @@ public interface UserMapper {
     // 맵퍼 > 엔티티 > db
     // 데이터베이스에서 뺴는 리스트
     int save(User user);
+    int findUserByUsername()
 
 
 }

@@ -19,6 +19,6 @@ public class User {
     private String password;
     private String name;
     private String email;
-    private Set<UserRole> userRole;
+    private Set<UserRoles> userRoles;
 
 }

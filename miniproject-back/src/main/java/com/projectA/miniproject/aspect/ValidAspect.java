@@ -38,7 +38,7 @@ public class ValidAspect {
         BeanPropertyBindingResult bindingResult = null;
 
         for(Object arg : args){
-            if(arg.getClass() == BeanPropertyBindingResult.class) {
+            if (arg instanceof BeanPropertyBindingResult) {
                 bindingResult = (BeanPropertyBindingResult) arg;
                 break;
             }
@@ -50,7 +50,7 @@ public class ValidAspect {
                 break;
         }
 
-        if(bindingResult.hasErrors()){
+        if(bindingResult != null && bindingResult.hasErrors()){
             throw new ValidException("유효성 오류", bindingResult.getFieldErrors());
         }
 
@@ -59,19 +59,21 @@ public class ValidAspect {
 
 
     public void ValidSignupDto(Object args[] , BeanPropertyBindingResult bindingResult){
+        if (bindingResult == null) {
+            return;
+        }
 
         for (Object arg : args){
             if(arg.getClass() == ReqSignupDto.class){
                 ReqSignupDto dto = (ReqSignupDto) arg;
-                User findUser = userMapper.findByUsername(dto.getUsername());
-                log.info("{}",findUser);
+
 
                 if(!dto.getPassword().equals(dto.getCheckPassword())){
                     FieldError fieldError = new FieldError("checkPassword" , "checkPassword", "비밀번호 확인바랍니다");
                     bindingResult.addError(fieldError);
                 }
 
-                if(!dto.getUsername().equals(findUser.getUsername())){
+                if(userService.isDuplicateUsername(dto.getUsername())){
                     FieldError fieldError = new FieldError("username" , "username", "이미 존재하는 아이디입니다.");
                     bindingResult.addError(fieldError);
                 }

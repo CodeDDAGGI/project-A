@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class UserService {
@@ -28,6 +30,10 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    public Boolean isDuplicateUsername(String username){
+        return Optional.ofNullable(userMapper.findByUsername(username)).isPresent();
+    }
 
 //    @Transactional(rollbackFor = )
     public RespSignupDto SignupUser(ReqSignupDto signupDto){

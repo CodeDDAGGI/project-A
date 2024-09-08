@@ -3,6 +3,7 @@ package com.projectA.miniproject.aspect;
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.entity.User;
 import com.projectA.miniproject.exception.ValidException;
+import com.projectA.miniproject.repository.UserMapper;
 import com.projectA.miniproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,6 +24,9 @@ public class ValidAspect {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Pointcut("annotation(com.projectA.miniproject.aspect.annotation.ValidAop)")
     private void pointCut() {
@@ -55,18 +59,19 @@ public class ValidAspect {
 
 
     public void ValidSignupDto(Object args[] , BeanPropertyBindingResult bindingResult){
-        User findUser = userService.;
 
         for (Object arg : args){
             if(arg.getClass() == ReqSignupDto.class){
                 ReqSignupDto dto = (ReqSignupDto) arg;
+                User findUser = userMapper.findByUsername(dto.getUsername());
+                log.info("{}",findUser);
 
                 if(!dto.getPassword().equals(dto.getCheckPassword())){
                     FieldError fieldError = new FieldError("checkPassword" , "checkPassword", "비밀번호 확인바랍니다");
                     bindingResult.addError(fieldError);
                 }
 
-                if(!dto.getUsername().equals()){
+                if(!dto.getUsername().equals(findUser.getUsername())){
                     FieldError fieldError = new FieldError("username" , "username", "이미 존재하는 아이디입니다.");
                     bindingResult.addError(fieldError);
                 }

@@ -1,5 +1,6 @@
 package com.projectA.miniproject.controller;
 
+import com.projectA.miniproject.aspect.annotation.ValidAop;
 import com.projectA.miniproject.dto.Request.ReqSigninDto;
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.service.UserService;
@@ -19,6 +20,7 @@ public class UserController {
     private UserService userService;
 
     //post 추가
+    @ValidAop
     @PostMapping("/auth/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody ReqSignupDto joinUser) {
         log.info("{}", joinUser);
@@ -30,4 +32,5 @@ public class UserController {
         log.info("{}", dto);
         return ResponseEntity.ok().body(userService.getAccessToken(dto));
     }
+
 }

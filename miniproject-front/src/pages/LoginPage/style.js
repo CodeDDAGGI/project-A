@@ -3,23 +3,55 @@ import { css } from "@emotion/react";
 export const layout = css`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 0px auto;
+    width: 400px;
 `;
 
-export const header = css`
-    margin-bottom: 10px;
+export const logo = css`
+
 `;
 
 export const loginInput = css`
     display: flex;
     flex-direction: column;
-
+    width: 100%;
+    
     & input {
-        height: 20px;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    & div {
+        box-sizing: border-box;
+        padding: 0px 20px;
+        width: 100%;
+    }
+
+    & div:nth-of-type(1) {
+        border: 1px solid #dbdbdb;
+        border-bottom: none;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    & div:nth-last-of-type(1) {
+        border: 1px solid #dbdbdb;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
         margin-bottom: 10px;
     }
 
-    & span {
-        font-weight: 600;
-    }
+`;
+
+export const loginButton = css`
+
+    width: 100%;
+    height: 35px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    cursor: pointer;
 `;

@@ -13,7 +13,7 @@ function Header(props) {
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
                     <div><Icon><LuSearch /></Icon></div>
-                    <div><Icon><LuUser /></Icon></div>
+                    <div><Link to={"/news/login"}><Icon><LuUser /></Icon></Link></div>
                     <div><Link to={"/news/signup"}><Icon><LuUserPlus /></Icon></Link></div>
                 </div>
             </div>

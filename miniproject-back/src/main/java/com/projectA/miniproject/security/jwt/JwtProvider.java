@@ -2,6 +2,7 @@ package com.projectA.miniproject.security.jwt;
 
 import com.projectA.miniproject.entity.User;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -38,13 +39,13 @@ public class JwtProvider {
             throw new RuntimeException();
         }
         int bearerLength = "bearer ".length();
-        return  bearerToken.substring(bearerLength);
+        return bearerToken.substring(bearerLength);
     }
 
     public Claims getClaims(String token) {
-
+        JwtParser jwtParser = Jwts.parser()
+                .setSigningKey(key)
+                .build();
+        return jwtParser.parseClaimsJws(token).getPayload();
     }
-
-
-
 }

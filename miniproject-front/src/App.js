@@ -15,17 +15,15 @@ function App() {
   return (
     <>
       <Global styles={reset} />
-      <MainLayout>
         <Routes>
           <Route path='/' element={<HomePageLayout />} />
           <Route path='/news/politics' element={<PoliticsPage />} />
           <Route path="/news/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/news/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           {/* 뉴스페이지 */}
             <Route path='/news/write' element={<WritePage />} />
         </Routes>
-      </MainLayout>
       <Footer />
     </>
   );

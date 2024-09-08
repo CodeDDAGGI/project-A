@@ -30,6 +30,9 @@ function SlidingBanner(props) {
                 <SwiperSlide><SlideLayout /></SwiperSlide>
                 <SwiperSlide><SlideLayout /></SwiperSlide>
                 <SwiperSlide><SlideLayout /></SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
+                <SwiperSlide><SlideLayout /></SwiperSlide>
             </Swiper>
         </div>
     );

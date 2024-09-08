@@ -19,16 +19,15 @@ public class UserController {
     private UserService userService;
 
     //post 추가
-    @PostMapping("/signup")
+    @PostMapping("/auth/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody ReqSignupDto joinUser) {
         log.info("{}", joinUser);
         return ResponseEntity.ok().body(userService.SignupUser(joinUser));
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody ReqSigninDto dto) {
-        System.out.println(dto);
-        return ResponseEntity.ok().body(null);
-
+        log.info("{}", dto);
+        return ResponseEntity.ok().body(userService.getAccessToken(dto));
     }
 }

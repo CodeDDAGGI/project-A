@@ -20,7 +20,6 @@ public class UserController {
     private UserService userService;
 
     //post 추가
-    @ValidAop
     @PostMapping("/auth/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody ReqSignupDto joinUser) {
         log.info("{}", joinUser);

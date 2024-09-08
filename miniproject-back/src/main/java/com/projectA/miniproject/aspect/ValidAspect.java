@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.FieldError;
 
-import javax.validation.ValidationException;
 
 @Component
 @Aspect

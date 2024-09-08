@@ -1,5 +1,6 @@
 package com.projectA.miniproject.controller;
 
+import com.projectA.miniproject.aspect.annotation.ValidAop;
 import com.projectA.miniproject.dto.Request.ReqSigninDto;
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.service.UserService;
@@ -30,4 +31,5 @@ public class UserController {
         log.info("{}", dto);
         return ResponseEntity.ok().body(userService.getAccessToken(dto));
     }
+
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import *as s from './style';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignupApi } from '../../apis/signupApi';
+import { showFieldErrorMessage } from '../../exception/errorHandler';
 
 function SignupPage(props) {
     const navigator = useNavigate();
@@ -13,6 +14,12 @@ function SignupPage(props) {
         name: "",
         email: "",
     });
+    const [fieldErrorMessage , setFieldErrorMessages] = useState({fieldErrors :[
+        {
+            field: "",
+            defaultMessage: ""
+        }
+    ]});
 
     const handleInputChange = (e) => {
         setInputUser(inputUser => ({
@@ -23,35 +30,43 @@ function SignupPage(props) {
 
 
     const SignupSubmitClick = async () => {
-        const signupdata = await SignupApi(inputUser);
-        console.log(inputUser);
-        console.log(signupdata);
-        
-        if(!signupdata.isSuccess) {
+        try{
+            const signupdata = await SignupApi(inputUser);
+            console.log(inputUser);
+            console.log(signupdata);
+            
+        if (!signupdata.isSuccess) { 
             alert("회원가입에 실패했습니다.");
+            showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
             return;
         }
-
+    
         alert("회원가입에 성공");
-        navigator("/");
+        navigator("/auth/login");
+            
+    }catch(error) {
+        console.error('에러', error);
+        alert("회원가입 중 오류 발생")
+    }
     }
 
     
-    return (
+    
+    return ( 
         <div css={s.layout}>
-            <Link to={"/"}>사이트 로고</Link>
-            <div>
+                <p>
+                    <Link to={"/"}>사이트 로고</Link>
+                </p>
                 <div css={s.inputContainer}>
                     <input type="text" name='username' value={inputUser.username} onChange={handleInputChange} placeholder='아이디'/>
                     <input type="password" name='password' value={inputUser.password} onChange={handleInputChange} placeholder='비밀번호'/>
                     <input type="password" name='checkPassword' value={inputUser.checkPassword} onChange={handleInputChange} placeholder='비밀번호 확인'/>
                     <input type="text" name='name' value={inputUser.name} onChange={handleInputChange} placeholder='이름'/>
                     <input type="email" name='email' value={inputUser.email} onChange={handleInputChange} placeholder='이메일'/>
+                    <div css={s.signupButton}>
+                        <button onClick={SignupSubmitClick}>가입하기</button>
+                    </div>
                 </div>
-                <div css={s.signupButton}>
-                    <button onClick={SignupSubmitClick}>가입하기</button>
-                </div>
-            </div>
         </div>
     );
 }

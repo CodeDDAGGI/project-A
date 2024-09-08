@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/v1/*" ,
                         "/test/*",
                         "/h2-console/**",
-                        "/auth/**")
+                        "/auth/**",
+                        "/news/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

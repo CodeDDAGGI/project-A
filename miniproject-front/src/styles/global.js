@@ -22,6 +22,10 @@ export const reset = css`
         text-decoration: none;
     } */
 
+    a{
+        text-decoration: none;
+    }
+
 
 
     

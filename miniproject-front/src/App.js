@@ -9,6 +9,8 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import PoliticsPage from './pages/PoliticsPage/PoliticsPage';
 import HomePageLayout from './components/HomePageLayout/HomePageLayout';
 import SignupPage from './pages/SignupPage/SignupPage';
+import WritePage from './pages/News/WritePage/WritePage';
+import TestPage from './pages/News/WritePage/TestPage';
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
           <Route path="/news/signup" element={<SignupPage />} />
           <Route path="/news/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          {/* 뉴스페이지 */}
+          <Route path='/news/write' element={<WritePage />} />
+          <Route path='/news/test' element={<TestPage />} />
         </Routes>
       <Footer />
     </>

@@ -3,6 +3,7 @@ import React from 'react';
 import * as s from './style';
 import MainListLayout from '../List/MainListLayout/MainListLayout';
 import SubListLayout from '../List/SubListLayout/SubListLayout';
+import WritePage from '../../pages/News/WritePage/WritePage';
 
 function BodyLayout() {
     return (

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import *as s from './style';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignupApi } from '../../apis/signupApi';
+import { showFieldErrorMessage } from '../../exception/errorHandler';
 
 function SignupPage(props) {
     const navigator = useNavigate();
@@ -13,6 +14,12 @@ function SignupPage(props) {
         name: "",
         email: "",
     });
+    const [fieldErrorMessage , setFieldErrorMessages] = useState({fieldErrors :[
+        {
+            field: "",
+            defaultMessage: ""
+        }
+    ]});
 
     const handleInputChange = (e) => {
         setInputUser(inputUser => ({
@@ -23,21 +30,29 @@ function SignupPage(props) {
 
 
     const SignupSubmitClick = async () => {
-        const signupdata = await SignupApi(inputUser);
-        console.log(inputUser);
-        console.log(signupdata);
-        
-        if(!signupdata.isSuccess) {
+        try{
+            const signupdata = await SignupApi(inputUser);
+            console.log(inputUser);
+            console.log(signupdata);
+            
+        if (!signupdata.isSuccess) { 
             alert("회원가입에 실패했습니다.");
+            showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
             return;
         }
-
+    
         alert("회원가입에 성공");
-        navigator("/");
+        navigator("/auth/login");
+            
+    }catch(error) {
+        console.error('에러', error);
+        alert("회원가입 중 오류 발생")
+    }
     }
 
     
-    return (
+    
+    return ( 
         <div css={s.layout}>
                 <p>
                     <Link to={"/"}>사이트 로고</Link>

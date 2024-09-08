@@ -5,13 +5,16 @@ import Header from '../../../components/Header/Header';
 import ReactQuill, { Quill } from 'react-quill';
 import ImageResize from "quill-image-resize";
 import 'react-quill/dist/quill.snow.css';
+import { instance } from '../../../apis/util/instance';
 
 Quill.register('modules/imageResize', ImageResize);
 
 const layout = css`
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 0 0 20px 0;
+    width: 100%;
     height: 100%;
 `;
 const editorLayout = css`
@@ -19,8 +22,9 @@ const editorLayout = css`
     box-sizing: border-box;
     margin-bottom: 42px;
     min-height: 400px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     width: 100%;
+
 `;
 const editorTitle = css`
     box-sizing: border-box;
@@ -62,9 +66,6 @@ function WritePage(props) {
         content: "",
         img: "",
     });
-    const [fileName, setFileName] = useState("");
-    console.log(fileName);
-
     const handleImgOnClick = () => {
         const fileInput = document.createElement("input");
         fileInput.setAttribute("type", "file");
@@ -72,7 +73,6 @@ function WritePage(props) {
         fileInput.click();
         fileInput.onchange = (e) => {
             const uploadFile = e.target.files[0];
-            console.log(uploadFile);
             setBoard(board => ({
                 ...board,
                 img: uploadFile.name,
@@ -84,7 +84,6 @@ function WritePage(props) {
             ...board,
             [e.target.name]: e.target.value,
         }))
-        console.log(board);
     }
 
     const handleQuillValueOnChange = (value) => {
@@ -93,8 +92,14 @@ function WritePage(props) {
             content: quillRef.current.getEditor().getText().trim() === "" ? "" : value,
         }));
     }
-    const handleSubmitOnClick = () => {
+    const handleSubmitOnClick = async () => {
         console.log(board);
+        let response = null;
+        try {
+            response = await instance.post("/news",board);
+        } catch (e) {
+            console.error(e);
+        }
         
     }
     const toolbarOptions = useMemo(() => [
@@ -109,7 +114,7 @@ function WritePage(props) {
     ], []);
 
     return (
-        <div>
+        <>
             <Header />
             <div css={layout}>
                 <div>
@@ -118,7 +123,7 @@ function WritePage(props) {
                 <div css={mainImgUpLoadBox}>
                     <div>
                         <button onClick={handleImgOnClick}>메인사진업로드</button>
-                        <span>{fileName}</span>
+                        <span>{board.img}</span>
                     </div>
                     <div>
                         <button onClick={handleSubmitOnClick}>등록하기</button>
@@ -134,14 +139,14 @@ function WritePage(props) {
                         style={{
                             boxSizing: "border-box",
                             width: "100%",
-                            height: "100%"
+                            height: "100%",
                         }}
                         onChange={handleQuillValueOnChange}
                         modules={{
                             toolbar: {
                                 container: toolbarOptions,
                                 // handlers: {
-                                //     // image: handleImageLoad,
+                                //     image: handleImageLoad,
                                 // }
                             },
                             imageResize: {
@@ -152,7 +157,7 @@ function WritePage(props) {
                     />
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

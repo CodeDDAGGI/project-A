@@ -66,7 +66,10 @@ public class ValidAspect {
                     bindingResult.addError(fieldError);
                 }
 
-                if(!dto.getUsername().equals())
+                if(!dto.getUsername().equals()){
+                    FieldError fieldError = new FieldError("username" , "username", "이미 존재하는 아이디입니다.");
+                    bindingResult.addError(fieldError);
+                }
             }
         }
     }

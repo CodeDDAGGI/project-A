@@ -39,19 +39,19 @@ function SignupPage(props) {
     
     return (
         <div css={s.layout}>
-            <Link to={"/"}>사이트 로고</Link>
-            <div>
+                <p>
+                    <Link to={"/"}>사이트 로고</Link>
+                </p>
                 <div css={s.inputContainer}>
                     <input type="text" name='username' value={inputUser.username} onChange={handleInputChange} placeholder='아이디'/>
                     <input type="password" name='password' value={inputUser.password} onChange={handleInputChange} placeholder='비밀번호'/>
                     <input type="password" name='checkPassword' value={inputUser.checkPassword} onChange={handleInputChange} placeholder='비밀번호 확인'/>
                     <input type="text" name='name' value={inputUser.name} onChange={handleInputChange} placeholder='이름'/>
                     <input type="email" name='email' value={inputUser.email} onChange={handleInputChange} placeholder='이메일'/>
+                    <div css={s.signupButton}>
+                        <button onClick={SignupSubmitClick}>가입하기</button>
+                    </div>
                 </div>
-                <div css={s.signupButton}>
-                    <button onClick={SignupSubmitClick}>가입하기</button>
-                </div>
-            </div>
         </div>
     );
 }

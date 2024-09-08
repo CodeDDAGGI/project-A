@@ -6,7 +6,7 @@ spring:
     password:
     # NEVER schema.sql에 쿼리 실행을 막아줌
     # ALWAYS schema.sql 실행
-    initialization-mode: ALWAYS
+    initialization-mode: NEVER
     schema: classpath:schema.sql
 
   h2:

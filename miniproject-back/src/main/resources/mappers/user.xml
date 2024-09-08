@@ -3,8 +3,71 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.projectA.miniproject.repository.UserMapper">
+
+    <resultMap id="userResultMap" type="com.projectA.miniproject.entity.User">
+        <id property="user_id" column="user_id"/>
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+        <collection property="userRoles" javaType="java.util.Set" resultMap="userRolesResultMap" />
+    </resultMap>
+
+    <resultMap id="userRolesResultMap" type="com.projectA.miniproject.entity.UserRoles">
+        <id property="id" column="user_roles_id" />
+        <result property="user_id" column="ur_user_id" />
+        <result property="role_id" column="ur_role_id" />
+        <association property="role" resultMap="roleResultMap" />
+    </resultMap>
+
+    <resultMap id="roleResultMap" type="com.projectA.miniproject.entity.Role">
+        <id property="id" column="role_id" />
+        <result property="name" column="role_name" />
+    </resultMap>
+
     <insert id="save" useGeneratedKeys="true" keyProperty="user_id">
         insert into user_tb (user_id, username, password, name, email)
         values (default , #{username} , #{password} ,#{name}, #{email} )
     </insert>
+
+    <select id="findByUsername" resultMap="userResultMap">
+        select
+            u.user_id,
+            u.username,
+            u.password,
+            u.name,
+            u.email,
+            ur.user_role_id,
+            ur.user_id as ur_user_id,
+            ur.role_id as ur_role_id,
+            r.role_id,
+            r.role_name
+        from
+            user_tb u
+            left outer join user_role_tb ur on(ur.user_id = u.user_id)
+            left outer join role_tb r on(r.role_id = ur.role_id)
+        where
+            username = #{username}
+    </select>
+
+    <select id="findById" resultMap="userResultMap">
+        select
+            u.user_id,
+            u.username,
+            u.password,
+            u.name,
+            u.email,
+            ur.user_role_id as user_roles_id,
+            ur.user_id as ur_user_id,
+            ur.role_id as ur_role_id,
+            r.role_id as role_id,
+            r.role_name as role_name
+        from
+            user_tb u
+            left outer join user_role_tb ur on(ur.user_id = u.user_id)
+            left outer join role_tb r on(r.role_id = ur.role_id)
+        where
+            u.user_id = #{user_id}
+    </select>
+
 </mapper>

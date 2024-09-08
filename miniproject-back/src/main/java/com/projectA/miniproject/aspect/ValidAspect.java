@@ -28,7 +28,7 @@ public class ValidAspect {
     @Autowired
     private UserMapper userMapper;
 
-    @Pointcut("annotation(com.projectA.miniproject.aspect.annotation.ValidAop)")
+    @Pointcut("@annotation(com.projectA.miniproject.aspect.annotation.ValidAop)")
     private void pointCut() {
     }
 

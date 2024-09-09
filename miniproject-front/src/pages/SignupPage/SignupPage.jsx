@@ -42,7 +42,7 @@ function SignupPage(props) {
         }
     
         alert("회원가입에 성공");
-        navigator("/auth/login");
+        navigator("/news/login");
             
     }catch(error) {
         console.error('에러', error);

@@ -49,7 +49,6 @@ public class JwtAccessTokenFilter extends GenericFilter {
             Authentication authentication = new UsernamePasswordAuthenticationToken(principalUser, null, principalUser.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (JwtException e) {
-            e.printStackTrace();
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

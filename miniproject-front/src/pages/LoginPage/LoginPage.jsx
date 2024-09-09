@@ -21,9 +21,8 @@ function LoginPage(props) {
 
     const handleLoginOnClick = async () => {
         try {
-            const response = await LoginApi(inputUser);
-            console.log(response);
-            navigate("/");
+            await LoginApi(inputUser);
+            alert("로그인 성공");
         } catch (error) {
 
         }

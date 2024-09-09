@@ -20,9 +20,9 @@ function LoginPage(props) {
     }
 
     const handleLoginOnClick = async () => {
+        
         try {
             await LoginApi(inputUser);
-            alert("로그인 성공");
         } catch (error) {
 
         }

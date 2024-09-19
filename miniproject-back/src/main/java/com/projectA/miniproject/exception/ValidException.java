@@ -1,17 +1,16 @@
 package com.projectA.miniproject.exception;
 
-import lombok.Getter;
+import lombok.Data;
 import org.springframework.validation.FieldError;
 
 import java.util.List;
-
+@Data
 public class ValidException extends Exception{
 
-    @Getter
-    private List<FieldError> fieldError;
+    private List<FieldError> fieldErrors;
 
-    public ValidException(String message, List<FieldError> fieldError ) {
+    public ValidException(String message, List<FieldError> fieldErrors) {
         super(message);
-        this.fieldError = fieldError;
+        this.fieldErrors = fieldErrors;
     }
 }

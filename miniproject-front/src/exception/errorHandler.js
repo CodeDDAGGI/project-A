@@ -16,5 +16,6 @@ export const showFieldErrorMessage = (fieldErrors , setFieldErrorMessage) => {
     };
   }
 
+  console.log(EmptyfieldErrors);
   setFieldErrorMessage(EmptyfieldErrors);
 }

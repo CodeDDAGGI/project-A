@@ -20,10 +20,9 @@ function LoginPage(props) {
     }
 
     const handleLoginOnClick = async () => {
+        
         try {
-            const response = await LoginApi(inputUser);
-            console.log(response);
-            navigate("/");
+            await LoginApi(inputUser);
         } catch (error) {
 
         }

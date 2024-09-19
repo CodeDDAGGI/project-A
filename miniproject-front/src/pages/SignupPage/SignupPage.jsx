@@ -43,7 +43,17 @@ function SignupPage() {
         }
 
         alert("회원가입에 성공");
+<<<<<<< HEAD
         navigator("/auth/login");
+=======
+        navigator("/news/login");
+            
+    }catch(error) {
+        console.error('에러', error);
+        alert("회원가입 중 오류 발생")
+    }
+    }
+>>>>>>> ba9062a5734c800888c4dacbbd22852f9de30fd0
 
         }catch(error) {
         console.error('에러', error);

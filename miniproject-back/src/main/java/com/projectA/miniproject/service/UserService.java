@@ -75,7 +75,7 @@ public class UserService {
             throw new UsernameNotFoundException("사용자 정보를 다시 확인하세요.");
         }
 
-        if(!passwordEncoder.matches(password, user.getPassword())) {
+        if(!password.equals(user.getPassword())) {
             throw new BadCredentialsException("사용자 정보를 다시 확인하세요.");
         }
 

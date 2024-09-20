@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.projectA.miniproject.repository.ImgMapper">
+    <insert id="save">
+        insert into
+            img_tb
+        values (default, #{img_url}, #{news_id})
+    </insert>
+    <select id="findByNewsId" resultType="com.projectA.miniproject.entity.Image">
+        SELECT
+            *
+        FROM
+            img_tb
+        WHERE
+            news_id = #{newsId}
+    </select>
+
+</mapper>

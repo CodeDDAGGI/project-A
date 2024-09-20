@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.projectA.miniproject.repository.NewsMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="news_id">
+        insert into
+            NEWS_TB
+        values (default, #{title}, #{content}, 0, default)
+    </insert>
+
+    <resultMap id="getNewsMap" type="com.projectA.miniproject.entity.News">
+        <id column="news_id" property="news_id"/>
+        <result column="user_id" property="user_id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <association property="img" resultMap="getImg"/>
+    </resultMap>
+
+    <resultMap id="getImg" type="com.projectA.miniproject.entity.Image">
+        <id column="image_id" property="image_id"/>
+        <result column="img_url" property="img_url"/>
+        <result column="news_id" property="news_id"/>
+    </resultMap>
+
+    <select id="getListAll" resultMap="getNewsMap">
+        SELECT
+            nt.news_id as news_id,
+            nt.user_id as user_id,
+            nt.news_title as title,
+            nt.news_content as content,
+            it.img_id as image_id,
+            it.img_url as img_url,
+            it.news_id as news_id,
+        FROM
+            news_tb nt
+        LEFT OUTER JOIN img_tb it ON(it.news_id = nt.news_id)
+        WHERE
+            1=1
+    </select>
+</mapper>

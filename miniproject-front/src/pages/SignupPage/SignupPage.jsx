@@ -36,19 +36,18 @@ function SignupPage() {
             console.log(inputUser);
             console.log(signupdata);
             
-        if (!signupdata.isSuccess) { 
-            console.log("에러 띄워라",signupdata.fieldErrors);
-            showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
-            return;
-        }
-
-        alert("회원가입에 성공");
-        navigator("/auth/login");
-
-        }catch(error) {
-        console.error('에러', error);
-        console.log(error);
-        alert("회원가입 중 오류 발생");
+            
+            alert("회원가입에 성공");
+            navigator("/auth/login");
+            
+            }catch(error) {
+                console.error('에러', error);
+                alert("회원가입 중 오류 발생");
+                    if (!signupdata.isSuccess) { 
+                        console.log("에러 띄워라",signupdata.fieldErrors);
+                        showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
+                        return;
+                    }
         }
     }
     

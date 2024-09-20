@@ -26,6 +26,7 @@ export const SignupApi = async (user) => {
     } catch (error) {
         console.error(error);
         const response = error.response;
+        console.log(response);
         signupdata = {
             isSuccess: false,
             ok:{
@@ -37,7 +38,7 @@ export const SignupApi = async (user) => {
                 defaultMessage: fieldError.defaultMessage
             }))
         }
-        // console.log(signupdata.fieldErrors);
+        console.log(signupdata.fieldErrors);
     }
     return signupdata;
 }

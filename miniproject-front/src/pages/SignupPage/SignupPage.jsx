@@ -35,18 +35,18 @@ function SignupPage(props) {
             console.log(inputUser);
             console.log(signupdata);
             
-        if (!signupdata.isSuccess) { 
-            alert("회원가입에 실패했습니다.");
-            showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
-            return;
-        }
-    
-        alert("회원가입에 성공");
-        navigator("/news/login");
+            if (!signupdata.isSuccess) { 
+                alert("회원가입에 실패했습니다.");
+                showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
+                return;
+            }
             
-    }catch(error) {
-        console.error('에러', error);
-        alert("회원가입 중 오류 발생")
+            alert("회원가입에 성공");
+            navigator("/news/login");
+            
+        }catch(error) {
+            console.error('에러', error);
+            alert("회원가입 중 오류 발생")
     }
     }
 

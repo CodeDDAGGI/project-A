@@ -4,6 +4,7 @@ import com.projectA.miniproject.dto.Request.ReqSigninDto;
 import com.projectA.miniproject.dto.Request.ReqSignupDto;
 import com.projectA.miniproject.dto.Response.RespSigninDto;
 import com.projectA.miniproject.dto.Response.RespSignupDto;
+import com.projectA.miniproject.dto.Response.RespUserInfoDto;
 import com.projectA.miniproject.entity.Role;
 import com.projectA.miniproject.entity.User;
 import com.projectA.miniproject.exception.SignupException;
@@ -17,6 +18,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -80,5 +83,21 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public RespUserInfoDto getUserInfo(Long id) {
+        User user = userMapper.findById(id);
+
+        Set<String> roles = user.getUserRoles().stream().map(
+                userRole -> userRole.getRole().getName()
+        ).collect(Collectors.toSet());
+
+        return RespUserInfoDto.builder()
+                .userId(user.getUser_id())
+                .username(user.getUsername())
+                .name(user.getName())
+                .email(user.getEmail())
+                .roles(roles)
+                .build();
     }
 }

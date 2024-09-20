@@ -5,26 +5,35 @@ import { Link } from 'react-router-dom';
 import { LuUser } from "react-icons/lu";
 import { LuSearch } from "react-icons/lu";
 import { LuUserPlus } from "react-icons/lu";
+import { GrUserAdmin } from "react-icons/gr";
 import Icon from '../Forms/Icon/Icon';
+import { useQueryClient } from 'react-query';
 
 function Header(props) {
 
-    const [ isSerach , setSerach] = useState(false);
+    const [isSerach, setSerach] = useState(false);
+    const queryClient = useQueryClient();
+    const accessTokenValidState = queryClient.getQueryState("accessTokenValidQuery");
 
-    const handleOnClick = () => {       
-            setSerach(!isSerach);
-            console.log(isSerach);
+    const handleOnClick = () => {
+        setSerach(!isSerach);
+        console.log(isSerach);
     }
-            
-    
 
     return (
         <div css={s.layout}>
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
                     <div onClick={handleOnClick}><Icon><LuSearch /></Icon></div>
-                    <div><Link to={"/news/login"}><Icon><LuUser /></Icon></Link></div>
-                    <div><Link to={"/news/signup"}><Icon><LuUserPlus /></Icon></Link></div>
+                    <div><Link to={"/auth/login"}><Icon><LuUser /></Icon></Link></div>
+                    <div><Link to={"/auth/signup"}><Icon><LuUserPlus /></Icon></Link></div>
+                    {
+                        accessTokenValidState.status !== "success"
+                            ?
+                            <></>
+                            :
+                            <div><Icon><GrUserAdmin /></Icon></div>
+                    }
                 </div>
             </div>
             <div css={s.navContainer}>

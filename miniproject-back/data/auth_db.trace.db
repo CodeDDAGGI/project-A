@@ -902,3 +902,41 @@ select
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2024-09-20 10:12:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_TB" not found; SQL statement:
+select
+            u.user_id,
+            u.username,
+            u.password,
+            u.name,
+            u.email,
+            ur.user_role_id as user_roles_id,
+            ur.user_id as ur_user_id,
+            ur.role_id as ur_role_id,
+            r.role_id as role_id,
+            r.role_name as role_name
+        from
+            user_tb u
+            left outer join user_role_tb ur on(ur.user_id = u.user_id)
+            left outer join role_tb r on(r.role_id = ur.role_id)
+        where
+            u.user_id = ? [42102-200]
+2024-09-20 10:12:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_TB" not found; SQL statement:
+select
+            u.user_id,
+            u.username,
+            u.password,
+            u.name,
+            u.email,
+            ur.user_role_id as user_roles_id,
+            ur.user_id as ur_user_id,
+            ur.role_id as ur_role_id,
+            r.role_id as role_id,
+            r.role_name as role_name
+        from
+            user_tb u
+            left outer join user_role_tb ur on(ur.user_id = u.user_id)
+            left outer join role_tb r on(r.role_id = ur.role_id)
+        where
+            u.user_id = ? [42102-200]

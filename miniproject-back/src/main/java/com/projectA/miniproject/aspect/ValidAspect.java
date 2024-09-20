@@ -52,12 +52,11 @@ public class ValidAspect {
         if(bindingResult != null && bindingResult.hasErrors()){
             throw new ValidException("유효성 오류", bindingResult.getFieldErrors());
         }
-
         return proceedingJoinPoint.proceed();
     }
 
 
-    public void ValidSignupDto(Object args[] , BeanPropertyBindingResult bindingResult){
+    public void ValidSignupDto(Object[] args, BeanPropertyBindingResult bindingResult){
         if (bindingResult == null) {
             return;
         }

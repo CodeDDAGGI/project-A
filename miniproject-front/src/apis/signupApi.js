@@ -23,16 +23,14 @@ export const SignupApi = async (user) => {
             ok: response.data,
         }
     } catch (error) {
-        console.error(error);
         const response = error.response;
         signupdata = {
             isSuccess: false,
-            fieldErrors: response.data.map(fieldError => ({
+            fieldErrors: response.data.fieldErrors.map(fieldError => ({
                 field: fieldError.field,
                 defaultMessage: fieldError.defaultMessage
             }))
         }
     }
-
     return signupdata;
 }

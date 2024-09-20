@@ -25,6 +25,12 @@ export const loginInput = css`
         font-size: 18px;
     }
 
+    & p {
+        margin: 0px 0px 10px 10px;
+        color: #ff2f2f;
+        font-size: 12px;
+    }
+
     & div {
         box-sizing: border-box;
         padding: 0px 20px;

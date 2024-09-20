@@ -1,19 +1,24 @@
 package com.projectA.miniproject.controller;
 
 import com.projectA.miniproject.dto.NewsDto;
+import com.projectA.miniproject.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@RequestMapping("/news")
+@RequestMapping("/news")
 public class NewsController {
-    @PostMapping("/news")
-    public ResponseEntity<?> news(@RequestBody NewsDto.ReqDto dto) {
-        System.out.println(dto);
+    @Autowired
+    private NewsService newsService;
 
-        return ResponseEntity.ok().body(null);
+    @PostMapping
+    public ResponseEntity<?> newsWrite(@RequestBody NewsDto.ReqDto dto) {
+        return ResponseEntity.ok().body(newsService.newsWrite(dto));
     }
 
+    @GetMapping
+    public ResponseEntity<?> news() {
+        return ResponseEntity.ok().body(newsService.getNews());
+    }
 }

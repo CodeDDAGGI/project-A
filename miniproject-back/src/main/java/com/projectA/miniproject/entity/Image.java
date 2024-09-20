@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class news {
-
-    private int user_id;
-    private String username;
-    private String password;
-    private String user_email;
+public class Image {
+    private Long image_id;
+    private String img_url;
+    private Long news_id;
 
 }

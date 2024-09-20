@@ -1,8 +1,9 @@
 import React from 'react';
 /** @jsxImportSource @emotion/react */
+import { useQuery } from 'react-query';
+import { PacmanLoader } from 'react-spinners';
+import { instance } from '../../../apis/util/instance';
 import * as s from "./style";
-import dog from "../../../assets/강아지.jpg"
-import dog2 from "../../../assets/가로.jpg"
 
 function MainListLayout(props) {
     const date = new Date();
@@ -11,9 +12,20 @@ function MainListLayout(props) {
     const days = (date.getDate() > 10 ? "" : "0") + (date.getDate());
     const day = date.getDay();
     const week = ["일", "월", "화", "수", "목", "금", "토"]
-    const toDay = year + "년 " + month + "월 " + days + "일 " + week[day]+"요일";
+    const toDay = year + "년 " + month + "월 " + days + "일 " + week[day] + "요일";
+
+    const getMainList = useQuery(
+        ["getListQuery"],
+        async () => await instance.get("/news"),
+        {
+            retry: 0,
+            refetchOnWindowFocus: false,
+        }
+    )
+    console.log(getMainList?.data?.data);
     return (
         <div css={s.layout}>
+
             <div css={s.container}>
                 <div css={s.containerHeader}>
                     <h2><span>이 시각 <font>주요뉴스 </font></span> <strong>{toDay}</strong></h2>
@@ -25,149 +37,41 @@ function MainListLayout(props) {
                     <h2>스포츠</h2>
                     <h2>엔터</h2>
                 </div>
+
                 <div css={s.mapContainer}>
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <div >
-                                <img src={dog} alt="" />
-                            </div>
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
+                    {
+                        getMainList.isLoading &&
+                        <><PacmanLoader /></>
+                    }
+                    {
+                        getMainList.isError &&
+                        <h2>Error</h2>
+                    }
+                    {
+                        getMainList?.data?.data?.map(news => (
+                            <div css={s.dataSection}>
+                                <h2>{news.title}</h2>
+                                <div>
+                                    <div >
+                                        <img src={news.img_url} alt="" />
+                                    </div>
+                                    <div css={s.textConatainer}>
+                                        <p dangerouslySetInnerHTML={{ __html: news.content }}></p>
+                                        {/* <p>{news.content}</p> */}
+                                        {/* <p>뫄아우</p> */}
+                                    </div>
+                                </div>
                                 <div css={s.publisherContainer}>
                                     <p>2024-08-08</p>
-                                    <p>국민의 뉴쑤</p>
-                                    <p>기무링 리포터</p>
+                                    <p>{news.news_id}</p>
+                                    <p>{news.user_id}</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    {/* dataSection */}
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <img src={dog2} alt="" />
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>한결휘 늇쑤</p>
-                                    <p>아몰랑 기자</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection */}
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <div >
-                                <img src={dog} alt="" />
-                            </div>
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>국민의 뉴쑤</p>
-                                    <p>기무링 리포터</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection */}
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <img src={dog2} alt="" />
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>한결휘 늇쑤</p>
-                                    <p>아몰랑 기자</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection */}
-                    {/*  
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <div >
-                                <img src={dog} alt="" />
-                            </div>
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>국민의 뉴쑤</p>
-                                    <p>기무링 리포터</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection 
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <img src={dog2} alt="" />
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>한결휘 늇쑤</p>
-                                    <p>아몰랑 기자</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <div >
-                                <img src={dog} alt="" />
-                            </div>
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>국민의 뉴쑤</p>
-                                    <p>기무링 리포터</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection 
-                    <div css={s.dataSection}>
-                        <h2>제목</h2>
-                        <div>
-                            <img src={dog2} alt="" />
-                            <div css={s.textConatainer}>
-                                <p>대한민국의 영토는 한반도와 그 부속도서로 한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다.
-                                    국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다.</p>
-                                <div css={s.publisherContainer}>
-                                    <p>2024-08-08</p>
-                                    <p>한결휘 늇쑤</p>
-                                    <p>아몰랑 기자</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* dataSection */}
-
+                        ))
+                    }
                 </div>
-
             </div>
-        </div>
+        </div >
     );
 }
 

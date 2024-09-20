@@ -41,11 +41,12 @@ function SignupPage() {
             navigator("/auth/login");
             
             }catch(error) {
+                const response = error.response;
                 console.error('에러', error);
                 alert("회원가입 중 오류 발생");
-                    if (!signupdata.isSuccess) { 
-                        console.log("에러 띄워라",signupdata.fieldErrors);
-                        showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
+                    if (!response.isSuccess) { 
+                        console.log("에러 띄워라",response.fieldErrors);
+                        showFieldErrorMessage(response.fieldErrors, setFieldErrorMessages);
                         return;
                     }
         }

@@ -16,6 +16,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.Set;
@@ -38,7 +39,7 @@ public class UserService {
         return Optional.ofNullable(userMapper.findByUsername(username)).isPresent();
     }
 
-//    @Transactional(rollbackFor = )
+    @Transactional(rollbackFor = SignupException.class)
     public RespSignupDto SignupUser(ReqSignupDto signupDto){
         User user = null;
 

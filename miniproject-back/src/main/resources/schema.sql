@@ -37,11 +37,11 @@ CREATE TABLE user_role_tb
 
 CREATE TABLE news_tb
 (
-    news_id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    news_id         BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
     news_title      VARCHAR(255) NOT NULL,
-    news_content    VARCHAR(255) NOT NULL,
+    news_content    TEXT  NOT NULL,
     user_id         BIGINT       NOT NULL,
-    news_view_count BIGINT       NOT NULL
+    news_view_count BIGINT       NOT NULL DEFAULT 0
 );
 CREATE TABLE img_tb
 (

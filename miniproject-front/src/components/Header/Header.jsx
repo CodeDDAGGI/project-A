@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
 import { Link } from 'react-router-dom';
@@ -8,11 +8,21 @@ import { LuUserPlus } from "react-icons/lu";
 import Icon from '../Forms/Icon/Icon';
 
 function Header(props) {
+
+    const [ isSerach , setSerach] = useState(false);
+
+    const handleOnClick = () => {       
+            setSerach(!isSerach);
+            console.log(isSerach);
+    }
+            
+    
+
     return (
         <div css={s.layout}>
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
-                    <div><Icon><LuSearch /></Icon></div>
+                    <div onClick={handleOnClick}><Icon><LuSearch /></Icon></div>
                     <div><Link to={"/news/login"}><Icon><LuUser /></Icon></Link></div>
                     <div><Link to={"/news/signup"}><Icon><LuUserPlus /></Icon></Link></div>
                 </div>

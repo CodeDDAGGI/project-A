@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import *as s from './style';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignupApi } from '../../apis/signupApi';
-import { showFieldErrorMessage } from '../../exception/errorHandler';
 
 function SignupPage() {
     const navigator = useNavigate();
@@ -27,29 +26,40 @@ function SignupPage() {
             ...inputUser,
             [e.target.name]: e.target.value,
         }));
+        console.log(inputUser);
+    }
+
+    const showFieldErrorMessage = (fieldErrors) => {
+        let EmptyfieldErrors = {
+            username : <></>,
+            password : <></>,
+            checkPassword : <></>,
+            name : <></>,
+            email : <></>
+        }
+
+        for(let fieldError of fieldErrors){
+            EmptyfieldErrors = {
+                ...EmptyfieldErrors,
+                [fieldError.field] : <p>{fieldError.defaultMessage}</p>
+            }
+        }
+        setFieldErrorMessages(EmptyfieldErrors);
     }
 
 
     const SignupSubmitClick = async () => {
-        try{
             const signupdata = await SignupApi(inputUser);
             console.log(inputUser);
             console.log(signupdata);
             
-            
+            if (!signupdata.isSuccess) { 
+                console.log("에러 띄워라",signupdata.fieldErrors);
+                showFieldErrorMessage(signupdata.fieldErrors);
+                return;
+            }
             alert("회원가입에 성공");
             navigator("/auth/login");
-            
-            }catch(error) {
-                const response = error.response;
-                console.error('에러', error);
-                alert("회원가입 중 오류 발생");
-                    if (!response.isSuccess) { 
-                        console.log("에러 띄워라",response.fieldErrors);
-                        showFieldErrorMessage(response.fieldErrors, setFieldErrorMessages);
-                        return;
-                    }
-        }
     }
     
     

@@ -22,7 +22,7 @@ function MainListLayout(props) {
             refetchOnWindowFocus: false,
         }
     )
-    console.log(getMainList?.data?.data);
+    // console.log(getMainList?.data?.data);
     return (
         <div css={s.layout}>
 

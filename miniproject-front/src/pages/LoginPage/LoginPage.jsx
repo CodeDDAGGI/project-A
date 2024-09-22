@@ -70,6 +70,7 @@ function LoginPage(props) {
             return;
         }
         navigate("/");
+        window.location.reload();
     }
 
     return (

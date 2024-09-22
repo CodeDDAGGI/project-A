@@ -29,6 +29,7 @@ function App() {
   const accessTokenValid = useQuery(
     ["accessTokenValidQuery"],
     async () => {
+      setAuthRefresh(false);
       return await instance.get("/auth/access", {
         params: {
           accessToken: localStorage.getItem("accessToken")
@@ -51,8 +52,6 @@ function App() {
       },
     }
   );
-
-  console.log(accessTokenValid);
 
   const userInfo = useQuery(
     ["userInfoQuery"],

@@ -24,6 +24,6 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(SignupException.class)
     public ResponseEntity<?> signupException(SignupException e) {
-        return ResponseEntity.internalServerError().body(Map.of("isSuccess", false, "message", e.getMessage()));
+        return ResponseEntity.internalServerError().body(e.getMessage());
     }
 }

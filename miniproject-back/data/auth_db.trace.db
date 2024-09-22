@@ -986,3 +986,8 @@ select
             left outer join role_tb r on(r.role_id = ur.role_id)
         where
             u.user_id = ? [42102-200]
+2024-09-22 21:45:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLEUSER_TB" not found; SQL statement:
+insert into RoleUser_tb
+        values
+        (default , ? , ?) [42102-200]

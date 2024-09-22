@@ -26,8 +26,8 @@
     </resultMap>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="user_id">
-        insert into user_tb (user_id, username, password, name, email)
-        values (default , #{username} , #{password} ,#{name}, #{email} )
+        insert into user_tb
+        values (default , #{username} , #{password} ,#{name}, #{email} ,default)
     </insert>
 
     <select id="findByUsername" resultMap="userResultMap">

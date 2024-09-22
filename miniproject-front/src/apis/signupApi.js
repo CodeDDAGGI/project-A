@@ -1,11 +1,11 @@
-import { instance } from "./util/instance";
+import { instance } from "./util/instance"
 
-export const SignupApi = async (user) => {
-    let signupdata = {
-        isSuccess : false,
+export const signupApi = async (user) => {
+    let signupData = {
+        isSuceess: false,
         ok: {
-            message : "",
-            user : null
+            message: "",
+            user: null
         },
         fieldErrors: [
             {
@@ -14,23 +14,22 @@ export const SignupApi = async (user) => {
             }
         ]
     }
-    
     try {
         const response = await instance.post("/auth/signup", user);
-        console.log(response.data);
-        signupdata = {
-            isSuccess: true,
+        signupData = {
+            isSuceess: true,
             ok: response.data,
         }
     } catch (error) {
         const response = error.response;
-        signupdata = {
-            isSuccess: false,
-            fieldErrors: response.data.fieldErrors.map(fieldError => ({
-                field: fieldError.field,
+        signupData = {
+            isSuceess: false,
+            fieldErrors: response.data.map(fieldError => ({
+                field: fieldError.field, 
                 defaultMessage: fieldError.defaultMessage
-            }))
+            })),
         }
     }
-    return signupdata;
+
+    return signupData;
 }

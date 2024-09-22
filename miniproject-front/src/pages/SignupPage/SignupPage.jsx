@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import *as s from './style';
 import { Link, useNavigate } from 'react-router-dom';
-import { SignupApi } from '../../apis/signupApi';
+import { signupApi } from '../../apis/signupApi';
 
 function SignupPage() {
     const navigator = useNavigate();
@@ -29,45 +29,54 @@ function SignupPage() {
         console.log(inputUser);
     }
 
-    const showFieldErrorMessage = (fieldErrors) => {
-        let EmptyfieldErrors = {
-            username : <></>,
-            password : <></>,
-            checkPassword : <></>,
-            name : <></>,
-            email : <></>
-        }
-
-        for(let fieldError of fieldErrors){
-            EmptyfieldErrors = {
-                ...EmptyfieldErrors,
-                [fieldError.field] : <p>{fieldError.defaultMessage}</p>
-            }
-        }
-        setFieldErrorMessages(EmptyfieldErrors);
-    }
-
-
     const SignupSubmitClick = async () => {
-            const signupdata = await SignupApi(inputUser);
-            console.log(inputUser);
-            console.log(signupdata);
-            
-            if (!signupdata.isSuccess) { 
-                console.log("에러 띄워라",signupdata.fieldErrors);
-                showFieldErrorMessage(signupdata.fieldErrors);
+        try {
+            const signupdata = await signupApi(inputUser);
+            console.log(signupdata.fieldErrors); 
+            console.log("Signup Data:", signupdata);
+
+            if (!signupdata.isSuccess) {
+                console.log("Field Errors:", signupdata.fieldErrors);
+                showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
+                
                 return;
             }
+
             alert("회원가입에 성공");
             navigator("/auth/login");
+
+        } catch (error) {
+            console.error('에러', error);
+            alert("회원가입 중 오류 발생");
+        }
     }
     
+    const showFieldErrorMessage = (fieldErrors, setFieldErrorMessages) => {
+        console.log("Field Errors in Handler:", fieldErrors);
+        let EmptyfieldErrors = {
+            username: <></>,
+            password: <></>,
+            checkPassword: <></>,
+            name: <></>,
+            email: <></>
+        };
+    
+        for (let fieldError of fieldErrors) {
+            EmptyfieldErrors = {
+                ...EmptyfieldErrors,
+                [fieldError.field]: <p>{fieldError.defaultMessage}</p>
+            };
+        }
+    
+        console.log("Updated Field Error Messages:", EmptyfieldErrors);
+        setFieldErrorMessages(EmptyfieldErrors);
+    };
     
     return ( 
         <div css={s.layout}>
-                <p>
+                <h1>
                     <Link to={"/"}>사이트 로고</Link>
-                </p>
+                </h1>
                 <div css={s.inputContainer}>
                     <input type="text" name='username' value={inputUser.username} onChange={handleInputChange} placeholder='아이디'/>
                     {fieldErrorMessages.username}

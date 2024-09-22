@@ -7,7 +7,9 @@ import com.projectA.miniproject.dto.Response.RespSignupDto;
 import com.projectA.miniproject.dto.Response.RespUserInfoDto;
 import com.projectA.miniproject.entity.Role;
 import com.projectA.miniproject.entity.User;
+import com.projectA.miniproject.entity.UserRoles;
 import com.projectA.miniproject.exception.SignupException;
+import com.projectA.miniproject.repository.RoleUserMapper;
 import com.projectA.miniproject.repository.UserMapper;
 import com.projectA.miniproject.security.jwt.JwtProvider;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +37,9 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RoleUserMapper RoleUserMapper;
+
     public Boolean isDuplicateUsername(String username){
         return Optional.ofNullable(userMapper.findByUsername(username)).isPresent();
     }
@@ -50,7 +55,20 @@ public class UserService {
             Role role = Role.builder()
                     .name("ROLE_NAME")
                     .build();
+            if(role == null){
+                role = Role.builder()
+                        .name("ROLE_NAME")
+                        .build();
+            }
 
+            UserRoles userRoles = UserRoles.builder()
+                    .user_id(user.getUser_id())
+                    .role_id(role.getId())
+                    .build();
+
+            RoleUserMapper.save(userRoles);
+
+            user.setUserRoles(Set.of(userRoles));
         }catch (Exception e){
             throw new SignupException(e.getMessage());
         }

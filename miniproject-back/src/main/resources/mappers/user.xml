@@ -15,8 +15,8 @@
 
     <resultMap id="userRolesResultMap" type="com.projectA.miniproject.entity.UserRoles">
         <id property="id" column="user_roles_id" />
-        <result property="user_id" column="ur_user_id" />
-        <result property="role_id" column="ur_role_id" />
+        <result property="userId" column="ur_user_id" />
+        <result property="roleId" column="ur_role_id" />
         <association property="role" resultMap="roleResultMap" />
     </resultMap>
 

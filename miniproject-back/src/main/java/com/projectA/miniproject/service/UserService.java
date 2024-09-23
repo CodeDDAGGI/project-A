@@ -45,42 +45,43 @@ public class UserService {
     }
 
     @Transactional(rollbackFor = SignupException.class)
-    public RespSignupDto SignupUser(ReqSignupDto signupDto){
+    public RespSignupDto SignupUser(ReqSignupDto signupDto) {
         User user = null;
 
-        try {
+//        try {
             user = signupDto.toEntity(passwordEncoder);
             userMapper.save(user);
 
             Role role = Role.builder()
                     .name("ROLE_NAME")
                     .build();
-            if(role == null){
+            if (role == null) {
                 role = Role.builder()
                         .name("ROLE_NAME")
                         .build();
             }
 
-            UserRoles userRoles = UserRoles.builder()
-                    .user_id(user.getUser_id())
-                    .role_id(role.getId())
+//            UserRoles userRoles = UserRoles.builder()
+//                    .userId(user.getUser_id())
+//                    .roleId(role.getId())
+//                    .build();
+//
+//            RoleUserMapper.save(userRoles);
+//
+//            user.setUserRoles(Set.of(userRoles));
+//        }catch (Exception e){
+//            throw new SignupException(e.getMessage());
+//        }
+
+
+//        log.info("{}", signupDto);
+//
+            return RespSignupDto.builder()
+                    .message("회원가입 성공")
+                    .user(user)
                     .build();
-
-            RoleUserMapper.save(userRoles);
-
-            user.setUserRoles(Set.of(userRoles));
-        }catch (Exception e){
-            throw new SignupException(e.getMessage());
         }
 
-
-        log.info("{}", signupDto);
-
-        return RespSignupDto.builder()
-                .message("회원가입 성공")
-                .user(user)
-                .build();
-    }
 
     public RespSigninDto getAccessToken(ReqSigninDto dto) {
         User user = isValidUsernameAndPassword(dto.getUsername(), dto.getPassword());

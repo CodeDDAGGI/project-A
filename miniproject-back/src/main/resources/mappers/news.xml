@@ -34,8 +34,8 @@
             it.news_id as news_id,
         FROM
             news_tb nt
-        LEFT OUTER JOIN img_tb it ON(it.news_id = nt.news_id)
+            LEFT OUTER JOIN img_tb it ON(it.news_id = nt.news_id)
         WHERE
-            1=1
+        1=1
     </select>
 </mapper>

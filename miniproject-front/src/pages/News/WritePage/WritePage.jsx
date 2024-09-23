@@ -6,6 +6,10 @@ import ReactQuill, { Quill } from 'react-quill';
 import ImageResize from "quill-image-resize";
 import 'react-quill/dist/quill.snow.css';
 import { instance } from '../../../apis/util/instance';
+import { useNavigate } from 'react-router-dom';
+import { ref, deleteObject, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+import { storage } from '../../../firebase/firebase';
+import { v4 as uuid } from 'uuid';
 
 Quill.register('modules/imageResize', ImageResize);
 
@@ -59,6 +63,7 @@ const buttonBox = css`
     width: 100%;
 `;
 function WritePage(props) {
+    const navigate = useNavigate();
 
     const quillRef = useRef(null);
     const [board, setBoard] = useState({
@@ -73,9 +78,10 @@ function WritePage(props) {
         fileInput.click();
         fileInput.onchange = (e) => {
             const uploadFile = e.target.files[0];
+            console.log(uploadFile);
             setBoard(board => ({
                 ...board,
-                img: uploadFile.name,
+                img: uploadFile
             }))
         }
     }
@@ -93,15 +99,41 @@ function WritePage(props) {
         }));
     }
     const handleSubmitOnClick = async () => {
-        console.log(board);
         let response = null;
-        try {
-            response = await instance.post("/news",board);
-        } catch (e) {
-            console.error(e);
-        }
-        
+        const storageRef = ref(storage, `news/write/${uuid()}_${board.img.name}`);
+        console.log(board.img);
+        const task = uploadBytesResumable(storageRef, board.img);
+        task.on(
+            "state_changed",
+            (snapshot) => {
+                console.log("업로드중");
+            },
+            (e) => {
+                console.log("파이어베이스 업로드 중 에러발생");
+                console.error(e);
+            },
+            async (success) => {
+                const url = await getDownloadURL(storageRef);
+                let data = board;
+                data.img = url;
+                console.log("바뀐 데이터");
+                console.log(data);
+                try {
+                    response = await instance.post("/news", data);
+                    if (response.status !== 200) {
+                        deleteObject(storageRef);
+                    }
+                } catch (e) {
+                    console.error(e);
+                    return;
+                }
+                alert("등록하였습니다");
+                navigate("/");
+            }
+        );
+
     }
+
     const toolbarOptions = useMemo(() => [
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
         [{ 'font': [] }],
@@ -123,7 +155,7 @@ function WritePage(props) {
                 <div css={mainImgUpLoadBox}>
                     <div>
                         <button onClick={handleImgOnClick}>메인사진업로드</button>
-                        <span>{board.img}</span>
+                        <span>{board.img.name}</span>
                     </div>
                     <div>
                         <button onClick={handleSubmitOnClick}>등록하기</button>

@@ -99,10 +99,14 @@ h2{
     }
 `;
 export const textConatainer = css`
-display: flex;
-flex-direction: column;
-justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    
 `;
+
+
 export const publisherContainer = css`
     display: flex;
     color: grey;

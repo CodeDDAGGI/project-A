@@ -9,6 +9,7 @@ import com.projectA.miniproject.entity.Role;
 import com.projectA.miniproject.entity.User;
 import com.projectA.miniproject.entity.UserRoles;
 import com.projectA.miniproject.exception.SignupException;
+import com.projectA.miniproject.repository.RoleMapper;
 import com.projectA.miniproject.repository.RoleUserMapper;
 import com.projectA.miniproject.repository.UserMapper;
 import com.projectA.miniproject.security.jwt.JwtProvider;
@@ -40,6 +41,9 @@ public class UserService {
     @Autowired
     private RoleUserMapper RoleUserMapper;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
     public Boolean isDuplicateUsername(String username){
         return Optional.ofNullable(userMapper.findByUsername(username)).isPresent();
     }
@@ -48,34 +52,32 @@ public class UserService {
     public RespSignupDto SignupUser(ReqSignupDto signupDto) {
         User user = null;
 
-//        try {
+        try {
             user = signupDto.toEntity(passwordEncoder);
             userMapper.save(user);
 
-            Role role = Role.builder()
-                    .name("ROLE_NAME")
-                    .build();
+            Role role = roleMapper.findByName("ROLE_USER");
+
             if (role == null) {
                 role = Role.builder()
-                        .name("ROLE_NAME")
+                        .role_name("ROLE_USER")
                         .build();
+                roleMapper.save(role);
             }
 
-//            UserRoles userRoles = UserRoles.builder()
-//                    .userId(user.getUser_id())
-//                    .roleId(role.getId())
-//                    .build();
-//
-//            RoleUserMapper.save(userRoles);
-//
-//            user.setUserRoles(Set.of(userRoles));
-//        }catch (Exception e){
-//            throw new SignupException(e.getMessage());
-//        }
+            UserRoles userRoles = UserRoles.builder()
+                    .userId(user.getUser_id())
+                    .roleId(role.getRole_id())
+                    .build();
+            
+            RoleUserMapper.save(userRoles);
 
+            user.setUserRoles(Set.of(userRoles));
+        }catch (Exception e){
+            throw new SignupException(e.getMessage());
+        }
+        log.info("{}", signupDto);
 
-//        log.info("{}", signupDto);
-//
             return RespSignupDto.builder()
                     .message("회원가입 성공")
                     .user(user)
@@ -109,7 +111,7 @@ public class UserService {
         User user = userMapper.findById(id);
 
         Set<String> roles = user.getUserRoles().stream().map(
-                userRole -> userRole.getRole().getName()
+                userRole -> userRole.getRole().getRole_name()
         ).collect(Collectors.toSet());
 
         return RespUserInfoDto.builder()

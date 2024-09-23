@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {
-    private Long id;
-    private String name;
+    private Long role_id;
+    private String role_name;
 }

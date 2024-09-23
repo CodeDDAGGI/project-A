@@ -23,7 +23,7 @@ const editorLayout = css`
     margin-bottom: 42px;
     min-height: 400px;
     /* flex-grow: 1; */
-    width: 100%;
+    width: 80%;
 
 `;
 const editorTitle = css`
@@ -40,7 +40,7 @@ const editorTitle = css`
 `;
 const mainImgUpLoadBox = css`
     display: flex;
-    width: 100%;
+    width: 80%;
     & > div> button {
         width: fit-content;
         margin: 0 10px 0 0;

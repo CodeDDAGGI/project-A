@@ -11,12 +11,12 @@ import { useQueryClient } from 'react-query';
 
 function Header(props) {
 
-    const [isSerach, setSerach] = useState(false);
+    const [isSerach, setSearch] = useState(false);
     const queryClient = useQueryClient();
     const accessTokenValidState = queryClient.getQueryState("accessTokenValidQuery");
 
     const handleOnClick = () => {
-        setSerach(!isSerach);
+        setSearch(!isSerach);
         console.log(isSerach);
     }
 
@@ -24,7 +24,7 @@ function Header(props) {
         <div css={s.layout}>
             <div css={s.loginContainer}>
                 <div css={s.buttonContainer}>
-                    <div onClick={handleOnClick}><Icon><LuSearch /></Icon></div>
+                    <div onClick={handleOnClick} setSerach={setSearch}><Icon><LuSearch /></Icon></div>
                     <div><Link to={"/auth/login"}><Icon><LuUser /></Icon></Link></div>
                     <div><Link to={"/auth/signup"}><Icon><LuUserPlus /></Icon></Link></div>
                     {

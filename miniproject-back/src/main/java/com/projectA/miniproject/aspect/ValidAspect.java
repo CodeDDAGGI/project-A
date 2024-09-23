@@ -33,6 +33,8 @@ public class ValidAspect {
 
     @Around("pointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint)throws Throwable {
+
+
         Object[] args = proceedingJoinPoint.getArgs();
         BeanPropertyBindingResult bindingResult = null;
 

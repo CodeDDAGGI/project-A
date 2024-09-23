@@ -14,6 +14,7 @@ public class NewsController {
 
     @PostMapping
     public ResponseEntity<?> newsWrite(@RequestBody NewsDto.ReqDto dto) {
+        System.out.println(dto);
         return ResponseEntity.ok().body(newsService.newsWrite(dto));
     }
 

@@ -38,9 +38,9 @@ export const inputContainer = css`
         justify-content: center;
         align-items: center;
         color: #ed7878;
-        font-size: 16px;
+        font-size: 14px;
         margin: 0;
-        height: 22px;
+        height: 25px;
         
     }
     p:nth-last-of-type(1){

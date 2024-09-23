@@ -5,7 +5,15 @@
 <mapper namespace="com.projectA.miniproject.repository.RoleMapper">
 
     <insert id="save">
-        insert into role
+        insert into role_tb
         values(default , #{name})
     </insert>
+    <select id="findByName" resultType="com.projectA.miniproject.entity.Role">
+        select
+            role_id,role_name
+        from
+            role_tb
+        where
+            role_name =  #{name}
+    </select>
 </mapper>

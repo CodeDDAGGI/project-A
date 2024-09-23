@@ -64,3 +64,9 @@ export const navContainer = css`
         }
 }
 `;
+
+export const touchBanner = css`
+    width: 100%;
+    z-index: 99;
+    position: absolute;
+`;

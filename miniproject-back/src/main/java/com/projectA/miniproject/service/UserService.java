@@ -69,7 +69,7 @@ public class UserService {
                     .userId(user.getUser_id())
                     .roleId(role.getRole_id())
                     .build();
-            
+
             RoleUserMapper.save(userRoles);
 
             user.setUserRoles(Set.of(userRoles));

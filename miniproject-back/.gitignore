@@ -1,5 +1,5 @@
 application-secret.yml
-
+miniproject-back/data
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

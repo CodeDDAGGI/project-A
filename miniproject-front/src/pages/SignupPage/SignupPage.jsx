@@ -35,7 +35,7 @@ function SignupPage() {
             console.log(signupdata.fieldErrors); 
             console.log("Signup Data:", signupdata);
 
-            if (!signupdata.isSuccess) {
+            if (!signupdata.isSuceess) {
                 console.log("Field Errors:", signupdata.fieldErrors);
                 showFieldErrorMessage(signupdata.fieldErrors, setFieldErrorMessages);
                 
